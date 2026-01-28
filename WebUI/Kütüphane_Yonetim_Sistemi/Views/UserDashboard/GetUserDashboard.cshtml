@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Entites.Models.User>
+
+@{
+    ViewData["Title"] = "Kullanıcı Paneli";
+}
+
+<h2>Kullanıcılar</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <p>Gösterilecek kullanıcı yok.</p>
+}
+else
+{
+    <ul>
+        @foreach (var user in Model)
+        {
+            <li>
+                <strong>@user.Name</strong> - @user.Surname <br />
+                <small>@user.Email</small>
+            </li>
+        }
+    </ul>
+}

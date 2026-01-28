@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Entites/Entites.csproj" />
+  <Project Path="Infrastructure/Infrastructure.csproj" Id="b6c1b939-8c0f-41ab-a076-735125d77081" />
+  <Project Path="Kütüphane_Yonetim_Sistemi/Kütüphane_Yonetim_Sistemi.csproj" />
+</Solution>

@@ -1,0 +1,28 @@
+﻿@model List<Entites.Models.Book>
+@{
+    Layout = "_Book";
+}
+
+
+<h2>Kitaplar</h2>
+
+<form asp-action="Import" method="post">
+    <input type="text" name="query" placeholder="Kitap ara..." />
+    <button type="submit">Google'dan Ekle</button>
+</form>
+
+<hr />
+
+<ul>
+    @foreach (var book in Model)
+    {
+        <li>
+            <strong>@book.Title</strong> - @book.Author <br />
+
+            @if (!string.IsNullOrEmpty(book.Image))
+            {
+                <img src="@book.Image" alt="@book.Title" width="100" />
+            }
+        </li>
+    }
+</ul>

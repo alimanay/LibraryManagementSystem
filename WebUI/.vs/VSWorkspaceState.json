@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Infrastructure",
+    "\\Infrastructure\\ExternalServices",
+    "\\Infrastructure\\ExternalServices\\GoogleBooks",
+    "\\Kütüphane_Yonetim_Sistemi",
+    "\\Kütüphane_Yonetim_Sistemi\\Controllers",
+    "\\Kütüphane_Yonetim_Sistemi\\Views"
+  ],
+  "SelectedNode": "\\WebUI.slnx",
+  "PreviewInSolutionExplorer": false
+}
