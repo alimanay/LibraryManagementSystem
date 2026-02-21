@@ -2,27 +2,122 @@
 @{
     Layout = "_Book";
 }
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<div class="container-fluid px-4 mt-4">
 
+    <!-- Başlık & Ekle Butonları -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h3 class="fw-bold mb-0">📚 Kitap Yönetimi</h3>
+                    <small class="text-muted">Kitap ekle, sil ve yönet</small>
+                </div>
 
-<h2>Kitaplar</h2>
+                <div class="col-md-6 text-end">
+                    <form asp-action="CreateBook"
+                          method="post"
+                          class="d-inline-flex">
+                        <input type="text"
+                               name="query"
+                               class="form-control me-2"
+                               placeholder="Google Books'tan ekle"
+                               required />
+                        <button class="btn btn-dark">
+                            Google'dan Ekle
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<form asp-action="Import" method="post">
-    <input type="text" name="query" placeholder="Kitap ara..." />
-    <button type="submit">Google'dan Ekle</button>
-</form>
+    <!-- Çizgili Tablo -->
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
 
-<hr />
+            <table class="table table-bordered table-hover align-middle mb-0">
+                <thead class="table-secondary text-center">
+                    <tr>
+                        <th style="width:100px">Kapak</th>
+                        <th>Kitap Adı</th>
+                        <th>Açıklama</th>
+                        <th>Yazar</th>
+                        <th style="width:110px">Durum</th>
+                        <th style="width:160px">İşlemler</th>
+                    </tr>
+                </thead>
 
-<ul>
-    @foreach (var book in Model)
-    {
-        <li>
-            <strong>@book.Title</strong> - @book.Author <br />
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var book in Model)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    <img src="@book.Image"
+                                         class="img-fluid rounded"
+                                         style="max-height:80px" />
+                                </td>
 
-            @if (!string.IsNullOrEmpty(book.Image))
-            {
-                <img src="@book.Image" alt="@book.Title" width="100" />
-            }
-        </li>
-    }
-</ul>
+                                <td class="fw-semibold">@book.Title</td>
+
+                                <td style="max-width:320px" class="text-muted">
+                                    @(string.IsNullOrWhiteSpace(book.Description)
+                                                                ? "Açıklama yok"
+                                                                : book.Description.Length > 100
+                                                                ? book.Description.Substring(0, 100) + "..."
+                                                                : book.Description)
+                                </td>
+
+                                <td>@book.Author</td>
+
+                                <td class="text-center">
+                                    @if (book.IsActive)
+                                    {
+                                        <span class="badge bg-success">Var</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Yok</span>
+                                    }
+                                </td>
+
+                                <!-- İŞLEMLER -->
+                                <td class="text-center">
+                                    <a asp-controller="EditBook"
+                                       asp-action="GetBookById"
+                                       asp-route-id="@book.Id"
+                                       class="btn btn-warning btn-sm me-1 p-sm-0 w-50">
+                                        ✏️ Düzenle
+                                    </a>
+
+                                    <form asp-controller="EditBook" 
+                                          asp-action="DeleteBook"
+                                          asp-route-id="@book.Id"
+                                          method="post"
+                                          class="d-inline"
+                                          onsubmit="return confirm('Bu kitabı silmek istiyor musunuz?');">
+                                        <button class="btn btn-danger btn-sm w-25" >
+                                            🗑️ Sil
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center py-5 text-muted">
+                                📭 Kayıtlı kitap bulunamadı
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</div>

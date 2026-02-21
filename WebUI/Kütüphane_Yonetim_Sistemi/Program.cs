@@ -1,4 +1,4 @@
-
+using Entites.Dtos.BookDtos;
 using Infrastructure.ExternalServices.GoogleBooks;
 using Kütüphane_Yonetim_Sistemi.Context;
 using Microsoft.EntityFrameworkCore;
@@ -12,9 +12,11 @@ builder.Services.AddHttpClient<IGoogleBooksService, GoogleBooksService>(client =
 {
     client.BaseAddress = new Uri("https://www.googleapis.com/books/v1/");
 });
+builder.Services.AddAutoMapper(typeof(GeneralMapping).Assembly);
 builder.Services.AddSession();
 
 var app = builder.Build();
+
 
 
 // Configure the HTTP request pipeline.
