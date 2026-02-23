@@ -15,8 +15,8 @@
         <h4 class="head-h4">Kütüphane Admin</h4>
         <hr>
         <a href="/Home/Index">Dashboard</a>
-        <a href="/Book/Index" class="active">Kitap Yönetimi</a>
-        <a href="/Member/Index">Üye İşlemleri</a>
+        <a asp-controller="Book" asp-action="Index" >Kitap Yönetimi</a>
+        <a  asp-controller="User" asp-action="GetUsers">Üye İşlemleri</a>
         <a href="/Loan/Index">Ödünç Kayıtları</a>
     </div>
 
@@ -24,7 +24,18 @@
         <!-- ÜST BAR -->
         <header>
             <span class="text-muted">Hoş Geldiniz, @Context.Session.GetString("Admin")</span>
-            <button class="btn btn-outline-danger btn-sm">Çıkış Yap</button>
+            @Html.AntiForgeryToken()
+            <form asp-controller="Account"
+                  asp-action="Logout"
+                  method="post"
+                  class="d-inline">
+
+                @Html.AntiForgeryToken()
+
+                <button type="submit" class="btn btn-outline-danger btn-sm">
+                    Çıkış Yap
+                </button>
+            </form>
         </header>
 
         <!-- DEĞİŞKEN İÇERİK (SAYFA İÇERİĞİ) -->

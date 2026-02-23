@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Entites.Models.User>
+@{
+    Layout = "_Book";
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+
+        <table class="table table-bordered table-hover align-middle mb-0">
+            <thead class="table-light text-center">
+                <tr>
+                    <th>Adı Soyadı</th>
+                    <th>Email</th>
+                    <th>Numara</th>
+                    <th style="width:120px">Durum</th>
+                    <th style="width:180px">İşlemler</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var user in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold">
+                                @user.Name @user.Surname
+                            </td>
+
+                            <td style="max-width:300px;">
+                                @user.Email
+                            </td>
+
+                            <td>
+                                @user.PhoneNumber
+                            </td>
+
+                            <td class="text-center">
+                                @if (user.IsActive)
+                                {
+                                    <span class="badge bg-success">Aktif</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">Pasif</span>
+                                }
+                            </td>
+
+                            <!-- İŞLEMLER -->
+                            <td class="text-center">
+
+                                <a asp-controller="User"
+                                   asp-action="Edit"
+                                   asp-route-id="@user.UserId"
+                                   class="btn btn-warning btn-sm me-1">
+                                    ✏️ Düzenle
+                                </a>
+
+                                <form asp-controller="User"
+                                      asp-action="DeleteUser"
+                                      asp-route-id="@user.UserId"
+                                      method="post"
+                                      class="d-inline"
+                                      onsubmit="return confirm('@user.Name @user.Surname kullanıcısını silmek istiyor musunuz?');">
+
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        🗑️ Sil
+                                    </button>
+                                </form>
+
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" class="text-center py-4 text-muted">
+                            📭 Kayıtlı kullanıcı bulunamadı
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div>
+</div>                 

@@ -4,9 +4,10 @@ using Entites.Models;
 using Infrastructure.ExternalServices.GoogleBooks;
 using Kütüphane_Yonetim_Sistemi.Context;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Build.Utilities;
 using Microsoft.EntityFrameworkCore;
-
+[ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
 public class BookController : Controller
 {
     private readonly IGoogleBooksService _googleBooksService;
@@ -19,7 +20,16 @@ public class BookController : Controller
         _context = context;
         _mapper = mapper;
     }
-    
+    public override void OnActionExecuting(ActionExecutingContext context)
+    {
+        if (HttpContext.Session.GetString("Admin") == null)
+        {
+            context.Result = RedirectToAction("Login", "Account");
+        }
+
+        base.OnActionExecuting(context);
+    }
+
     [HttpGet]
     public async Task<IActionResult> Index()
     {

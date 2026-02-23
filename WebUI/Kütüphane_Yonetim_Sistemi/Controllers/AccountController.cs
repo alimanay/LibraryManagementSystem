@@ -1,6 +1,7 @@
 ﻿using Kütüphane_Yonetim_Sistemi.Context;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Kütüphane_Yonetim_Sistemi.Controllers
 {
@@ -12,7 +13,7 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
 
             _libraryContext = libraryContext;
         }
-
+        
         [HttpGet]
         public IActionResult Login()
         {
@@ -46,6 +47,16 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
             }
 
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Account");
+        }
+
+        
 
     }
 }

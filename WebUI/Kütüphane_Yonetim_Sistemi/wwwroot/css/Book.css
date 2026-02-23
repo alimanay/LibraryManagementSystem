@@ -3,10 +3,11 @@ body {
     display: flex;
     min-height: 100vh;
     background-color: #f8f9fa;
+
 }
 .head-h4 {
     color: white;
-    font-family:Bahnschrift;
+ 
 }
     .head-h4:hover {
         color: #1abc9c;
@@ -39,8 +40,9 @@ body {
 .main-content {
     flex: 1;
     padding: 20px;
-    margin:10px;
-    background-color: #F4F6F9;
+    margin:0;
+    background-color: #f9f9f9;
+    
 }
 
 header {

@@ -3,7 +3,8 @@
 /* ============================= */
 .container-fluid {
   
-    margin: 40px auto;
+    margin: auto;
+
 }
 
 /* ============================= */
@@ -14,6 +15,8 @@
     background: #ffffff;
     padding: 20px;
     transition: all 0.3s ease;
+
+    
 }
 
     .update-card:hover {
@@ -41,6 +44,7 @@
     font-size: 0.9rem;
     margin-bottom: 6px;
     color: #2c3e50;
+
 }
 
 /* ============================= */
@@ -54,6 +58,7 @@
     font-size: 0.95rem;
     transition: all 0.25s ease;
     background-color: #fff;
+
 }
 
     .modern-input:focus {

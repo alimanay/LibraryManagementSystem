@@ -3,8 +3,9 @@
 @{
     Layout = "_Book";
 }
-
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 <link href="~/css/EditBook.css" rel="stylesheet" />
+
 
 <div class="container-fluid px-4 mt-4">
 
@@ -40,7 +41,7 @@
                     </div>
 
                     <!-- IsActive -->
-                    <div class="col-md-6 mb-3 d-flex align-items-end">
+                    <div class="mb-2 d-flex align-items-end">
                         <div class="form-check form-switch">
                             <input asp-for="IsActive" class="form-check-input" type="checkbox" />
                             <label class="form-check-label fw-semibold">
