@@ -1,9 +1,20 @@
-﻿@model IEnumerable<Entites.Models.User>
+﻿@model IEnumerable<Entites.Dtos.UserDtos.GetListUserDto>
+
 @{
     Layout = "_Book";
 }
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 
+
+<div class="d-flex">
+    
+   <div class=" p-2 ms-auto">
+        <a asp-controller="User"
+           asp-action="CreateUser" class="btn btn-outline-dark">
+            Kullanıcı Oluştur 👤
+       </a>
+   </div>
+</div>
 <div class="card shadow-sm">
     <div class="card-body p-0">
 
@@ -34,6 +45,7 @@
 
                             <td>
                                 @user.PhoneNumber
+                                
                             </td>
 
                             <td class="text-center">
@@ -51,7 +63,7 @@
                             <td class="text-center">
 
                                 <a asp-controller="User"
-                                   asp-action="Edit"
+                                   asp-action="EditUser"
                                    asp-route-id="@user.UserId"
                                    class="btn btn-warning btn-sm me-1">
                                     ✏️ Düzenle
@@ -63,7 +75,7 @@
                                       method="post"
                                       class="d-inline"
                                       onsubmit="return confirm('@user.Name @user.Surname kullanıcısını silmek istiyor musunuz?');">
-
+                                    @Html.AntiForgeryToken()
                                     <button type="submit" class="btn btn-danger btn-sm">
                                         🗑️ Sil
                                     </button>
@@ -86,4 +98,4 @@
         </table>
 
     </div>
-</div>                 
+</div>

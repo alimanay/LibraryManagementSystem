@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\context\\librarycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\context\\librarycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6C1B939-8C0F-41AB-A076-735125D77081}|Infrastructure\\Infrastructure.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\infrastructure\\externalservices\\dtos\\googleresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6C1B939-8C0F-41AB-A076-735125D77081}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\externalservices\\dtos\\googleresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -48,11 +52,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "GoogleResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\Infrastructure\\ExternalServices\\DTOs\\GoogleResponseDto.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\ExternalServices\\DTOs\\GoogleResponseDto.cs",
+              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\Infrastructure\\ExternalServices\\DTOs\\GoogleResponseDto.cs",
+              "RelativeToolTip": "Infrastructure\\ExternalServices\\DTOs\\GoogleResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T12:15:54.885Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Program.cs",
               "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Program.cs",
@@ -60,24 +76,24 @@
               "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-18T16:11:37.757Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-18T16:11:37.757Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "LibraryContext.cs",
               "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Context\\LibraryContext.cs",
               "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Context\\LibraryContext.cs",
               "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Context\\LibraryContext.cs",
               "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Context\\LibraryContext.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAuwBEAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-31T01:12:57.228Z"
+              "WhenOpened": "2026-01-31T01:12:57.228Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\appsettings.Development.json",
               "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\appsettings.Development.json",
@@ -89,7 +105,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\appsettings.json",
               "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\appsettings.json",
@@ -101,7 +117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Book.cshtml",
               "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Shared\\Book.cshtml",
               "RelativeDocumentMoniker": "..\\..\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Shared\\Book.cshtml",
@@ -113,7 +129,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "_ValidationScriptsPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
               "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
@@ -125,7 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "..\\..\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Home\\Index.cshtml",
@@ -137,7 +153,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\_ViewImports.cshtml",
@@ -149,7 +165,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\_ViewStart.cshtml",
@@ -161,7 +177,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj",
               "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj",
               "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj",

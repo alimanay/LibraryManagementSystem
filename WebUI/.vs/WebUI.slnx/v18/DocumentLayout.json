@@ -3,36 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{2371A472-8DDB-280A-13C6-B8448EB16366}|Entites\\Entites.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\entites\\dtos\\userdtos\\createuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2371A472-8DDB-280A-13C6-B8448EB16366}|Entites\\Entites.csproj|solutionrelative:entites\\dtos\\userdtos\\createuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\views\\shared\\_book.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\views\\shared\\_book.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\views\\user\\createuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\views\\user\\createuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\controllers\\userdashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\controllers\\userdashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\controllers\\bookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\controllers\\bookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\views\\user\\edituser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\views\\user\\edituser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\views\\user\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\views\\user\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\views\\shared\\_book.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\views\\shared\\_book.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\views\\book\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\views\\book\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\views\\user\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\views\\user\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{2371A472-8DDB-280A-13C6-B8448EB16366}|Entites\\Entites.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\entites\\dtos\\bookdtos\\bookupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2371A472-8DDB-280A-13C6-B8448EB16366}|Entites\\Entites.csproj|solutionrelative:entites\\dtos\\bookdtos\\bookupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2371A472-8DDB-280A-13C6-B8448EB16366}|Entites\\Entites.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\entites\\dtos\\userdtos\\updateuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2371A472-8DDB-280A-13C6-B8448EB16366}|Entites\\Entites.csproj|solutionrelative:entites\\dtos\\userdtos\\updateuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\views\\book\\getbookbyid.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\views\\book\\getbookbyid.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,110 +54,149 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "BookController.cs",
-              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\BookController.cs",
-              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\BookController.cs",
-              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\BookController.cs",
-              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\BookController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAgwAkAAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-23T01:35:45.754Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "UserDashboardController.cs",
-              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\UserDashboardController.cs",
-              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\UserDashboardController.cs",
-              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\UserDashboardController.cs",
-              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\UserDashboardController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-23T01:34:42.951Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-23T01:12:03.317Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_Book.cshtml",
-              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Shared\\_Book.cshtml",
-              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Shared\\_Book.cshtml",
-              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Shared\\_Book.cshtml",
-              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Shared\\_Book.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACUAAAATAAAAAAAAAA==",
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-23T01:09:57.343Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\UserController.cs",
-              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAADwvxsAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-23T00:10:03.872Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Users.cshtml",
-              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\User\\Users.cshtml",
-              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\User\\Users.cshtml",
-              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\User\\Users.cshtml",
-              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\User\\Users.cshtml",
-              "ViewState": "AgIAADEAAAAAAAAAAAAiwDwAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-23T00:10:42.493Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Account\\Login.cshtml",
-              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Account\\Login.cshtml",
-              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Account\\Login.cshtml",
-              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Account\\Login.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-23T00:13:08.986Z",
+              "WhenOpened": "2026-02-26T01:38:15.676Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "_Book.cshtml",
+              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Shared\\_Book.cshtml",
+              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Shared\\_Book.cshtml",
+              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Shared\\_Book.cshtml",
+              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Shared\\_Book.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T01:25:17.855Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Book\\Index.cshtml",
               "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Book\\Index.cshtml",
               "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Book\\Index.cshtml",
               "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Book\\Index.cshtml",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAAAFkAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-23T00:11:22.844Z",
+              "WhenOpened": "2026-02-26T01:25:00.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Users.cshtml",
+              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\User\\Users.cshtml",
+              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\User\\Users.cshtml",
+              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\User\\Users.cshtml",
+              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\User\\Users.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T01:07:57.844Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CreateUser.cshtml",
+              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\User\\CreateUser.cshtml",
+              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\User\\CreateUser.cshtml",
+              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\User\\CreateUser.cshtml",
+              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\User\\CreateUser.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T01:05:42.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CreateUserDto.cs",
+              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\Entites\\Dtos\\UserDtos\\CreateUserDto.cs",
+              "RelativeDocumentMoniker": "Entites\\Dtos\\UserDtos\\CreateUserDto.cs",
+              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\Entites\\Dtos\\UserDtos\\CreateUserDto.cs",
+              "RelativeToolTip": "Entites\\Dtos\\UserDtos\\CreateUserDto.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAYwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T01:03:17.597Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UpdateUserDto.cs",
+              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\Entites\\Dtos\\UserDtos\\UpdateUserDto.cs",
+              "RelativeDocumentMoniker": "Entites\\Dtos\\UserDtos\\UpdateUserDto.cs",
+              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\Entites\\Dtos\\UserDtos\\UpdateUserDto.cs",
+              "RelativeToolTip": "Entites\\Dtos\\UserDtos\\UpdateUserDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T00:59:30.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BookUpdateDto.cs",
+              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\Entites\\Dtos\\BookDtos\\BookUpdateDto.cs",
+              "RelativeDocumentMoniker": "Entites\\Dtos\\BookDtos\\BookUpdateDto.cs",
+              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\Entites\\Dtos\\BookDtos\\BookUpdateDto.cs",
+              "RelativeToolTip": "Entites\\Dtos\\BookDtos\\BookUpdateDto.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAswBMAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T00:59:24.717Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EditUser.cshtml",
+              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\User\\EditUser.cshtml",
+              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\User\\EditUser.cshtml",
+              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\User\\EditUser.cshtml",
+              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\User\\EditUser.cshtml",
+              "ViewState": "AgIAADMAAAAAAAAAAAAuwDYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T00:56:54.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\UserController.cs",
+              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAACsAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T00:46:52.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GetBookById.cshtml",
+              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Book\\GetBookById.cshtml",
+              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Book\\GetBookById.cshtml",
+              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Book\\GetBookById.cshtml",
+              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Book\\GetBookById.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T00:46:16.444Z",
               "EditorCaption": ""
             }
           ]

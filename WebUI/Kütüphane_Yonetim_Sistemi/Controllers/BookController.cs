@@ -70,20 +70,10 @@ public class BookController : Controller
                 _context.Books.Add(book);
             }
 
-
         }
         await _context.SaveChangesAsync();
 
         return RedirectToAction(nameof(Index));
     }
-
-
-
-    [HttpPut]
-
-    public async Task<IActionResult> UpdateBook(Book book)
-    {
-        return View();
-    }
-   
+  
 }

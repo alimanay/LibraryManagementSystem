@@ -1,4 +1,4 @@
-using Entites.Dtos.BookDtos;
+using Entites.Dtos;
 using Infrastructure.ExternalServices.GoogleBooks;
 using Kütüphane_Yonetim_Sistemi.Context;
 using Microsoft.EntityFrameworkCore;
