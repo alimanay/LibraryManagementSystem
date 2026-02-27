@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Entites",
+    "\\Entites\\Dtos",
+    "\\Entites\\Dtos\\UserDtos",
     "\\Infrastructure",
     "\\Infrastructure\\ExternalServices",
     "\\Infrastructure\\ExternalServices\\GoogleBooks",

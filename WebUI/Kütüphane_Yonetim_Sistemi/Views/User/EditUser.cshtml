@@ -13,13 +13,9 @@
         </div>
 
         <div class="card-body">
-            @* ModelState hatalarını göster *@
-            <div asp-validation-summary="All" class="text-danger mb-3"></div>
-
             <form asp-controller="User" asp-action="UpdateUser" method="post" novalidate>
                 @Html.AntiForgeryToken()
                 <input type="hidden" asp-for="UserId" />
-
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label asp-for="Name" class="form-label">Ad</label>
@@ -41,7 +37,7 @@
 
                     <div class="col-md-6 mb-3">
                         <label asp-for="PhoneNumber" class="form-label">Telefon</label>
-                        <input asp-for="PhoneNumber" class="form-control modern-input" />
+                        <input asp-for="PhoneNumber" class="form-control modern-input" type="tel" />
                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
 

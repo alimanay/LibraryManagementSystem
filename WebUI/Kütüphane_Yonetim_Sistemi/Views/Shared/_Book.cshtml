@@ -1,4 +1,7 @@
-﻿
+﻿@{
+    var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["Action"]?.ToString();
+}
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -12,12 +15,25 @@
 <body>
     <!-- SOL MENÜ (SIDEBAR) -->
     <div class="sidebar">
+
         <h4 class="head-h4">Kütüphane Admin</h4>
         <hr>
-        <a href="/Home/Index">Dashboard</a>
-        <a asp-controller="Book" asp-action="Index" >Kitap Yönetimi</a>
-        <a  asp-controller="User" asp-action="GetUsers">Üye İşlemleri</a>
-        <a href="/Loan/Index">Ödünç Kayıtları</a>
+        <a asp-controller="Home" asp-action="Index"
+           class="@(currentController == "Home" ? "active" : "")">
+            Dashboard
+        </a>
+        <a asp-controller="Book" asp-action="Index"
+           class="@(currentController == "Book" ? "active" : "")">
+            Kitap Yönetimi
+        </a>
+        <a asp-controller="User" asp-action="GetUsers"
+           class="@(currentController == "User" ? "active" : "")">
+            Üye İşlemleri
+        </a>
+        <a asp-controller="Loan" asp-action="Index"
+           class="@(currentController == "Loan" ? "active" : "")">
+            Ödünç Kayıtları
+        </a>
     </div>
 
     <div class="main-content">

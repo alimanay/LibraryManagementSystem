@@ -29,18 +29,18 @@
 
                     <div class="col-md-6 mb-3">
                         <label asp-for="Email" class="form-label">E-posta</label>
-                        <input asp-for="Email" type="email" class="form-control modern-input" />
+                        <input asp-for="Email" type="email" class="form-control modern-input"/>
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label asp-for="PhoneNumber" class="form-label">Telefon</label>
-                        <input asp-for="PhoneNumber" class="form-control modern-input" />
+                        <input asp-for="PhoneNumber" class="form-control modern-input" type="tel" />
                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label asp-for="PasswordHash" class="form-label">Kullanıcı Şifresi</label>
-                        <input asp-for="PasswordHash" class="form-control modern-input" />
+                        <input asp-for="PasswordHash" class="form-control modern-input" type="password"/>
                         <span asp-validation-for="PasswordHash" class="text-danger"></span>
                     </div>
 
