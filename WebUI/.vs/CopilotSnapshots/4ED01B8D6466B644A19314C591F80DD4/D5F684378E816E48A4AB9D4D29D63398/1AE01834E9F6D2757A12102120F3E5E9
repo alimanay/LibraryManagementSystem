@@ -23,7 +23,7 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
         public async Task<IActionResult> Index(int? pageNo)
         {
             int page = pageNo ?? 1;
-            var users = _context.Users.OrderByDescending(x => x.UserId).ToPagedList(page, 5);
+            var users = _context.Users.OrderByDescending(x => x.UserId).ToPagedList(page, page);
             return View("Users",users);
         }
 

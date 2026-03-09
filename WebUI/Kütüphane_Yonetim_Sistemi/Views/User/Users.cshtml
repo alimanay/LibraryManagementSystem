@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Entites.Dtos.UserDtos.GetListUserDto>
+﻿@model X.PagedList.IPagedList<Entites.Models.User>
+@using X.PagedList.Mvc.Core
+@using X.PagedList
 
 @{
     Layout = "_Book";
@@ -96,6 +98,14 @@
             </tbody>
 
         </table>
+        <div class="mt-3 d-flex justify-content-center">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { pageNo = page }),
+            new PagedListRenderOptions
+            {
+                LiElementClasses = new[] { "page-item" },
+                PageClasses = new[] { "page-link" }
+            })
+        </div>
 
     </div>
 </div>

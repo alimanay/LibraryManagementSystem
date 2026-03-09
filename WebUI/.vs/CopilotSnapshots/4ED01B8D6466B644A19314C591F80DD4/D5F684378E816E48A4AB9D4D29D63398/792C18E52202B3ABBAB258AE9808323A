@@ -1,21 +1,19 @@
-﻿@model Entites.Dtos.UserDtos.UpdateUserDto
+﻿@model Entites.Dtos.UserDtos.CreateUserDto
 
 @{
     Layout = "_Book";
 }
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-<link href="~/css/EditBook.css" rel="stylesheet" />
 
 <div class="container-fluid px-4 mt-4">
     <div class="card shadow-sm border-0 update-card">
         <div class="card-header bg-white border-bottom">
-            <h4 class="mb-0 fw-semibold text-dark">👤 Kullanıcı Güncelle</h4>
+            <h4 class="mb-0 fw-semibold text-dark">👤 Kullanıcı Ekle</h4>
         </div>
 
         <div class="card-body">
-            <form asp-controller="User" asp-action="UpdateUser" method="post" novalidate>
-                @Html.AntiForgeryToken()
-                <input type="hidden" asp-for="UserId" />
+            
+            <form asp-controller="User" asp-action="CreateUser" method="post" novalidate>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label asp-for="Name" class="form-label">Ad</label>
@@ -28,15 +26,17 @@
                         <input asp-for="Surname" class="form-control modern-input" />
                         <span asp-validation-for="Surname" class="text-danger"></span>
                     </div>
+
                     <div class="col-md-6 mb-3">
                         <label asp-for="TCNumber" class="form-label">Tc Kimlik</label>
-                        <input asp-for="TCNumber" class="form-control modern-input" type="tel" />
+                        <input asp-for="TCNumber" class="form-control modern-input" type="tel"/>
                         <span asp-validation-for="TCNumber" class="text-danger"></span>
                     </div>
 
+
                     <div class="col-md-6 mb-3">
                         <label asp-for="Email" class="form-label">E-posta</label>
-                        <input asp-for="Email" type="email" class="form-control modern-input" />
+                        <input asp-for="Email" type="email" class="form-control modern-input"/>
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
 
@@ -45,6 +45,12 @@
                         <input asp-for="PhoneNumber" class="form-control modern-input" type="tel" />
                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="PasswordHash" class="form-label">Kullanıcı Şifresi</label>
+                        <input asp-for="PasswordHash" class="form-control modern-input" type="password"/>
+                        <span asp-validation-for="PasswordHash" class="text-danger"></span>
+                    </div>
+
 
                     <div class="mb-2 d-flex align-items-center">
                         <div class="form-check form-switch">
@@ -56,7 +62,7 @@
 
                 <div class="d-flex justify-content-end mt-4 pt-3 border-top action-buttons">
                     <a asp-controller="User" asp-action="Index" class="btn btn-light me-2">Vazgeç</a>
-                    <button type="submit" class="btn btn-primary">Güncelle</button>
+                    <button type="submit" class="btn btn-primary">Ekle</button>
                 </div>
             </form>
         </div>

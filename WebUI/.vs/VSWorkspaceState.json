@@ -1,9 +1,6 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Entites",
-    "\\Entites\\Dtos",
-    "\\Entites\\Dtos\\UserDtos",
     "\\Infrastructure",
     "\\Infrastructure\\ExternalServices",
     "\\Infrastructure\\ExternalServices\\GoogleBooks",
@@ -11,7 +8,8 @@
     "\\Kütüphane_Yonetim_Sistemi\\Controllers",
     "\\Kütüphane_Yonetim_Sistemi\\obj",
     "\\Kütüphane_Yonetim_Sistemi\\Views",
-    "\\Kütüphane_Yonetim_Sistemi\\Views\\Book"
+    "\\Kütüphane_Yonetim_Sistemi\\Views\\Book",
+    "\\Kütüphane_Yonetim_Sistemi\\Views\\Shared"
   ],
   "SelectedNode": "\\WebUI.slnx",
   "PreviewInSolutionExplorer": false

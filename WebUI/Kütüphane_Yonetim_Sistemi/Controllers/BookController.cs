@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Build.Utilities;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList.Extensions;
 [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
 public class BookController : Controller
 {
@@ -29,13 +30,16 @@ public class BookController : Controller
 
         base.OnActionExecuting(context);
     }
-
     [HttpGet]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int? pageNo)
     {
-        var books = await _context.Books.ToListAsync();
-        var value = _mapper.Map<List<Book>>(books);
-        return View(value);
+        int page = pageNo ?? 1;
+
+        var books =  _context.Books
+            .OrderByDescending(x => x.Id)
+            .ToPagedList(page, 5);
+
+        return View(books);
     }
     [HttpPost]
     public async Task<IActionResult> CreateBook(string query)

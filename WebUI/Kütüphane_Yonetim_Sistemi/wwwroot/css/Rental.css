@@ -1,0 +1,10 @@
+﻿#userList {
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.user-item:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}

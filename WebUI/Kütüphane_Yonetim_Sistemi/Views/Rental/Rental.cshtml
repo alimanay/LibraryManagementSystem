@@ -1,0 +1,208 @@
+﻿@{
+    Layout = "_Book";
+}
+<link href="~/css/Rental.css" rel="stylesheet" />
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<div class="container-fluid px-4 mt-4">
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <form asp-controller="Rental" asp-action="CreateLoan" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3 position-relative">
+                <label class="form-label">Kullanıcı Ara</label>
+                <input type="text" id="userSearch" class="form-control modern-input" placeholder="Kullanıcı adı yaz..." autocomplete="off" />
+
+                <ul id="userList" class="list-group position-absolute w-100" style="z-index:2000;"></ul>
+            </div>
+
+            <!-- Seçilen kullanıcı bilgileri (ayrı alanlar) -->
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Seçilen Kullanıcı</label>
+                <input type="text" id="userFullName" class="form-control" readonly placeholder="Seçilen kullanıcının adı" />
+                <input type="text" id="userTC" class="form-control mt-2" readonly placeholder="TC / Kimlik" />
+            </div>
+
+            <div class="col-md-6 mb-3 position-relative">
+                <label class="form-label">Kitap Ara</label>
+                <input type="text" id="bookSearch" class="form-control modern-input" placeholder="Kitap adı veya ISBN..." disabled />
+                <ul id="bookList" class="list-group position-absolute w-100" style="z-index:2000;"></ul>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Teslim Tarihi</label>
+                <input type="date" name="ReturnDate" class="form-control modern-input" />
+            </div>
+
+        </div>
+
+        <input type="hidden" name="UserId" id="UserId" />
+        <input type="hidden" name="BookId" id="BookId" />
+
+        <div class="d-flex justify-content-end mt-4">
+            <a class="btn btn-light me-2" asp-controller="Book" asp-action="Index">Vazgeç</a>
+            <button type="submit" class="btn btn-primary">Kitabı Kirala</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(function () {
+        // Debounce helper
+        function debounce(fn, delay) {
+            let t;
+            return function() {
+                const args = arguments;
+                clearTimeout(t);
+                t = setTimeout(() => fn.apply(this, args), delay);
+            };
+        }
+
+        // HTML escape
+        function escapeHtml(text) {
+            if (!text) return "";
+            return text.replace(/[&<>"'`=\/]/g, function (s) {
+                return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','/':'&#47;','=':'&#61;','`':'&#96;'})[s];
+            });
+        }
+
+        function showNoResults($list, text) {
+            $list.html(`<li class="list-group-item text-muted small">${escapeHtml(text)}</li>`);
+        }
+
+        // Kullanıcı arama
+        $("#userSearch").on("input", debounce(function () {
+            const value = $(this).val().trim();
+            const $userList = $("#userList");
+            if (value.length < 1) {
+                $userList.empty();
+                return;
+            }
+
+            $.get("/Rental/SearchUser", { query: value })
+                .done(function (data) {
+                    if (!data || data.length === 0) {
+                        showNoResults($userList, "Kullanıcı bulunamadı");
+                        return;
+                    }
+                    let html = "";
+                    data.forEach(function (item) {
+                        // backend ile uyumlu alan isimleri: userId, fullName, tcNumber
+                        const tc = item.tcNumber || item.TCNumber || "";
+                        html += `<li class="list-group-item user-item"
+                                     data-id="${item.userId}"
+                                     data-name="${escapeHtml(item.fullName)}"
+                                     data-tc="${escapeHtml(tc)}">
+                                     ${escapeHtml(item.fullName)} <small class="text-muted">(${escapeHtml(tc)})</small>
+                                 </li>`;
+                    });
+                    $userList.html(html);
+                })
+                .fail(function () {
+                    showNoResults($userList, "Arama sırasında hata oluştu");
+                });
+        }, 300));
+
+        // Kullanıcı seçme
+        $(document).on("click", ".user-item", function () {
+            const id = $(this).data("id");
+            const name = $(this).data("name");
+            const tc = $(this).data("tc");
+
+            $("#userFullName").val(name);
+            $("#userTC").val(tc);
+            $("#UserId").val(id);
+
+            $("#userSearch").val("");
+            $("#userList").empty();
+
+            $("#bookSearch").prop("disabled", false).focus();
+            $("#bookList").empty();
+
+            // Ön yükle: seçili kullanıcıya uygun kitapları getir
+            $.get("/Rental/AvailableBooksForUser", { userId: id })
+                .done(function (books) {
+                    const $bookList = $("#bookList");
+                    if (!books || books.length === 0) {
+                        showNoResults($bookList, "Seçili kullanıcıya uygun kitap bulunmadı");
+                        return;
+                    }
+                    let html = "";
+                    books.forEach(function (b) {
+                        html += `<li class="list-group-item book-item" data-id="${b.bookId}">
+                                    ${escapeHtml(b.title)} <small class="text-muted">(${escapeHtml(b.isbn || '')})</small>
+                                 </li>`;
+                    });
+                    $bookList.html(html);
+                })
+                .fail(function () {
+                    // ignore
+                });
+        });
+
+        // Kitap arama (kullanıcı seçildikten sonra)
+        $("#bookSearch").on("input", debounce(function () {
+            const q = $(this).val().trim();
+            const userId = $("#UserId").val();
+            const $bookList = $("#bookList");
+
+            if (q.length < 1) {
+                $bookList.empty();
+                return;
+            }
+            if (!userId) {
+                showNoResults($bookList, "Önce kullanıcı seçin");
+                return;
+            }
+
+            $.get("/Rental/SearchBook", { query: q, userId: userId })
+                .done(function (books) {
+                    if (!books || books.length === 0) {
+                        showNoResults($bookList, "Kitap bulunamadı");
+                        return;
+                    }
+                    let html = "";
+                    books.forEach(function (b) {
+                        html += `<li class="list-group-item book-item" data-id="${b.bookId}">
+                                    ${escapeHtml(b.title)} <small class="text-muted">(${escapeHtml(b.isbn || '')})</small>
+                                 </li>`;
+                    });
+                    $bookList.html(html);
+                })
+                .fail(function () {
+                    showNoResults($bookList, "Arama sırasında hata oluştu");
+                });
+        }, 300));
+
+        // Kitap seçme
+        $(document).on("click", ".book-item", function () {
+            const id = $(this).data("id");
+            const text = $(this).text().trim();
+            $("#bookSearch").val(text);
+            $("#BookId").val(id);
+            $("#bookList").empty();
+        });
+
+        // Tıklama dışı alanlarda listeleri kapat
+        $(document).on("click", function (e) {
+            if (!$(e.target).closest("#userSearch, #userList").length) {
+                $("#userList").empty();
+            }
+            if (!$(e.target).closest("#bookSearch, #bookList").length) {
+                $("#bookList").empty();
+            }
+        });
+    });
+</script>

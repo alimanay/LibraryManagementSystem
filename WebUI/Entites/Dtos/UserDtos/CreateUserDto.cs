@@ -14,6 +14,10 @@ namespace Entites.Dtos.UserDtos
         [Required(ErrorMessage = "Soyad alanı boş bırakılamaz")]
         public string Surname { get; set; }
 
+        [Required(ErrorMessage = "TC Kimlik boş bırakılamaz")]
+        [MinLength(11, ErrorMessage = "Kimlik numarası 11 haneli olmalı"), MaxLength(11)]
+        public string TCNumber { get; set; }
+
         [Required(ErrorMessage = "Email boş bırakılamaz")]
         [EmailAddress(ErrorMessage = "Geçerli bir email giriniz")]
         public string Email { get; set; } 

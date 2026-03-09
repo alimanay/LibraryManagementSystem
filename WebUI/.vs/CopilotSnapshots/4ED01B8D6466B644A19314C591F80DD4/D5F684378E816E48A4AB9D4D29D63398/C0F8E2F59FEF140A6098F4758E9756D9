@@ -23,7 +23,7 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
         public async Task<IActionResult> Index(int? pageNo)
         {
             int page = pageNo ?? 1;
-            var users = _context.Users.OrderByDescending(x => x.UserId).ToPagedList(page, 5);
+            var users = _context.Users.OrderByDescending(x => x.UserId).ToPagedList(page, pag);
             return View("Users",users);
         }
 
@@ -34,14 +34,12 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateUser(CreateUserDto createUserDto)
         {
 
             if (!ModelState.IsValid)
             {
-                // Return the same view with the model so validation messages are shown
-                return View("CreateUser", createUserDto);
+                return View(createUserDto);
             }
 
             var createUser = _mapper.Map<User>(createUserDto);
