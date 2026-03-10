@@ -141,7 +141,7 @@
                     }
                     let html = "";
                     books.forEach(function (b) {
-                        html += `<li class="list-group-item book-item" data-id="${b.bookId}">
+                        html += `<li  style="cursor:pointer" class="list-group-item book-item" data-id="${b.bookId}">
                                     ${escapeHtml(b.title)} <small class="text-muted">(${escapeHtml(b.isbn || '')})</small>
                                  </li>`;
                     });

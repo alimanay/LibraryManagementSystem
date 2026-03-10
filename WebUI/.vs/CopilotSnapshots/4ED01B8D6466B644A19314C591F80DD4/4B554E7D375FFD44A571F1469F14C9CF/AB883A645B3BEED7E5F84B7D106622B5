@@ -1,0 +1,32 @@
+﻿using Kütüphane_Yonetim_Sistemi.Context;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace Kütüphane_Yonetim_Sistemi.Controllers
+{
+    public class RentalEditController : Controller
+    {
+        private readonly LibraryContext _context;
+        public RentalEditController(LibraryContext context)
+        {
+            _context = context;
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View("/Views/Rental/RentalEdit.cshtml");
+        }
+
+        //Kitap kiralanan kişilerin bilgileri
+        [HttpGet]
+        public async Task<IActionResult> GetRental()
+        {
+            var rentalUser =await _context.Rentals.ToListAsync();
+           
+            return View(rentalUser);
+        }
+
+
+    }
+}
