@@ -49,13 +49,20 @@
                     
 
                     <td class="text-center">
-                        @if (user.IsReturned)
-                        {
-                            <span class="badge bg-success">Aktif</span>
+                        @if (user.ReturnDate.HasValue && (user.ReturnDate.Value - user.RentDate).Days <0)
+                        { 
+                            <span class="badge bg-danger">Gecikmiş Kitap </span>
                         }
                         else
                         {
-                            <span class="badge bg-secondary">Kirada</span>
+                            @if (user.IsReturned)
+                            {
+                                <span class="badge bg-success">Aktif</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Kirada</span>
+                            }
                         }
                     </td>
 
