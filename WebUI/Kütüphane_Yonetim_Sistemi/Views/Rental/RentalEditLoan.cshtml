@@ -1,0 +1,223 @@
+﻿@model Entites.Models.Rental
+@{
+    Layout = "_Book";
+}
+<link href="~/css/Rental.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<div class="container-fluid px-4 mt-4">
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <h5 class="mb-4">Kiralama Düzenle <small class="text-muted fs-6">#@Model.Id</small></h5>
+
+    <form asp-controller="RentalEdit" asp-action="EditLoan" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="RentalId" value="@Model.Id" />
+
+        <div class="row">
+
+            <!-- KULLANICI ARAMA -->
+            <div class="col-md-6 mb-3 position-relative">
+                <label class="form-label">Kullanıcı Ara</label>
+                <input type="text" id="userSearch" class="form-control modern-input"
+                       placeholder="Kullanıcı adı yaz..." autocomplete="off"
+                       value="@ViewBag.CurrentUserName" />
+                <ul id="userList" class="list-group position-absolute w-100" style="z-index:2000;"></ul>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Seçilen Kullanıcı</label>
+                <input type="text" id="userFullName" class="form-control" readonly
+                       value="@ViewBag.CurrentUserName" placeholder="Seçilen kullanıcının adı" />
+                <input type="text" id="userTC" class="form-control mt-2" readonly
+                       value="@ViewBag.CurrentUserTC" placeholder="TC / Kimlik" />
+            </div>
+
+            <!-- KİTAP ARAMA -->
+            <div class="col-md-6 mb-3 position-relative">
+                <label class="form-label">Kitap Ara</label>
+                <input type="text" id="bookSearch" class="form-control modern-input"
+                       placeholder="Kitap adı veya ISBN..."
+                       value="@ViewBag.CurrentBookTitle" />
+                <ul id="bookList" class="list-group position-absolute w-100" style="z-index:2000;"></ul>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Teslim Tarihi</label>
+                <input type="date" name="ReturnDate" class="form-control modern-input"
+                       value="@Model.ReturnDate?.ToString("yyyy-MM-dd")" />
+            </div>
+
+        </div>
+
+        <!-- Hidden alanlar -->
+        <input type="hidden" name="UserId" id="UserId" value="@Model.UserId" />
+        <input type="hidden" name="BookId" id="BookId" value="@Model.BookId" />
+
+        <div class="d-flex justify-content-end mt-4">
+            <a class="btn btn-light me-2" asp-controller="RentalEdit" asp-action="Index">Vazgeç</a>
+            <button type="submit" class="btn btn-primary">Değişiklikleri Kaydet</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(function () {
+
+        // Sayfa yüklendiğinde model'den gelen değerleri sabitle
+        var currentRentalId = @Model.Id;
+        var currentUserId   = @Model.UserId;   // 0 gelme sorununu önlemek için model'den al
+
+        // ── Yardımcılar ───────────────────────────────────────────────────────────
+        function debounce(fn, delay) {
+            var t;
+            return function () {
+                var args = arguments;
+                var ctx  = this;
+                clearTimeout(t);
+                t = setTimeout(function () { fn.apply(ctx, args); }, delay);
+            };
+        }
+
+        function escapeHtml(text) {
+            if (!text) return "";
+            return String(text).replace(/[&<>"'\/]/g, function (s) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;', '/': '&#47;' }[s];
+            });
+        }
+
+        function showNoResults($list, msg) {
+            $list.html('<li class="list-group-item text-muted small py-2">' + escapeHtml(msg) + '</li>');
+        }
+
+        function buildBookItem(b) {
+            return '<li class="list-group-item book-item" style="cursor:pointer" data-id="' + b.bookId + '">' +
+                        escapeHtml(b.title) +
+                        (b.isbn ? ' <small class="text-muted">(' + escapeHtml(b.isbn) + ')</small>' : '') +
+                   '</li>';
+        }
+
+        // ── Başlangıç: kitap arama her zaman aktif ────────────────────────────────
+        $("#bookSearch").prop("disabled", false);
+
+        // ── KULLANICI ARAMA ───────────────────────────────────────────────────────
+        $("#userSearch").on("input", debounce(function () {
+            var value    = $(this).val().trim();
+            var $userList = $("#userList");
+            if (value.length < 1) { $userList.empty(); return; }
+
+            $.get("/Rental/SearchUser", { query: value })
+                .done(function (data) {
+                    if (!data || data.length === 0) {
+                        showNoResults($userList, "Kullanıcı bulunamadı");
+                        return;
+                    }
+                    var html = "";
+                    $.each(data, function (i, item) {
+                        var tc = item.tcNumber || item.TCNumber || "";
+                        html += '<li class="list-group-item list-group-item-action user-item" style="cursor:pointer"' +
+                                    ' data-id="' + item.userId + '"' +
+                                    ' data-name="' + escapeHtml(item.fullName) + '"' +
+                                    ' data-tc="' + escapeHtml(tc) + '">' +
+                                    escapeHtml(item.fullName) +
+                                    ' <small class="text-muted">(' + escapeHtml(tc) + ')</small>' +
+                                '</li>';
+                    });
+                    $userList.html(html);
+                })
+                .fail(function () { showNoResults($userList, "Arama sırasında hata oluştu"); });
+        }, 300));
+
+        // ── KULLANICI SEÇİMİ ──────────────────────────────────────────────────────
+        $(document).on("click", ".user-item", function () {
+            var id   = $(this).data("id");
+            var name = $(this).data("name");
+            var tc   = $(this).data("tc");
+
+            currentUserId = id;   // güncel userId'yi de güncelle
+
+            $("#userFullName").val(name);
+            $("#userTC").val(tc);
+            $("#UserId").val(id);
+            $("#userSearch").val(name);
+            $("#userList").empty();
+
+            // Kitap alanını sıfırla ve yeni kullanıcı için müsait kitapları getir
+            $("#bookSearch").val("").prop("disabled", false).focus();
+            $("#BookId").val("");
+            $("#bookList").empty();
+
+            $.get("/Rental/AvailableBooksForUser", { userId: id })
+                .done(function (books) {
+                    var $bookList = $("#bookList");
+                    if (!books || books.length === 0) {
+                        showNoResults($bookList, "Bu kullanıcıya uygun müsait kitap bulunamadı");
+                        return;
+                    }
+                    var html = "";
+                    $.each(books, function (i, b) { html += buildBookItem(b); });
+                    $bookList.html(html);
+                })
+                .fail(function () { showNoResults($("#bookList"), "Kitaplar yüklenirken hata oluştu"); });
+        });
+
+        // ── KİTAP ARAMA (manuel yazma) ────────────────────────────────────────────
+        $("#bookSearch").on("input", debounce(function () {
+            var q         = $(this).val().trim();
+            var userId    = parseInt($("#UserId").val()) || currentUserId;  // her iki kaynaktan al
+            var $bookList = $("#bookList");
+
+            if (q.length < 1) { $bookList.empty(); return; }
+
+            // userId kontrolü — 0 veya geçersizse uyar
+            if (!userId || userId <= 0) {
+                showNoResults($bookList, "Önce kullanıcı seçin");
+                return;
+            }
+
+            // SearchBookForEdit RentalEdit controller'ında
+            $.get("/RentalEdit/SearchBookForEdit", { query: q, userId: userId, rentalId: currentRentalId })
+                .done(function (books) {
+                    if (!books || books.length === 0) {
+                        showNoResults($bookList, "Eşleşen kitap bulunamadı");
+                        return;
+                    }
+                    var html = "";
+                    $.each(books, function (i, b) { html += buildBookItem(b); });
+                    $bookList.html(html);
+                })
+                .fail(function () { showNoResults($bookList, "Arama sırasında hata oluştu"); });
+        }, 300));
+
+        // ── KİTAP SEÇİMİ ─────────────────────────────────────────────────────────
+        $(document).on("click", ".book-item", function () {
+            var id   = $(this).data("id");
+            var text = $(this).text().trim();
+            $("#bookSearch").val(text);
+            $("#BookId").val(id);
+            $("#bookList").empty();
+        });
+
+        // ── Dışarı tıklayınca listeleri kapat ─────────────────────────────────────
+        $(document).on("click", function (e) {
+            if (!$(e.target).closest("#userSearch, #userList").length) $("#userList").empty();
+            if (!$(e.target).closest("#bookSearch, #bookList").length) $("#bookList").empty();
+        });
+
+    });
+</script>
