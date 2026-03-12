@@ -3,6 +3,7 @@ using Entites.Dtos.BookDtos;
 using Entites.Dtos.UserDtos;
 using Entites.Models;
 using Kütüphane_Yonetim_Sistemi.Context;
+using Kütüphane_Yonetim_Sistemi.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using X.PagedList.Extensions;
@@ -13,20 +14,27 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
     {
         private readonly LibraryContext _context;
         private readonly IMapper _mapper;
-        public UserController(LibraryContext context, IMapper mapper)
+        private readonly IUserService _userService;
+        public UserController(LibraryContext context, IMapper mapper, IUserService userService)
         {
             _context = context;
             _mapper = mapper;
+            _userService = userService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index(int? pageNo)
         {
             int page = pageNo ?? 1;
-            var users = _context.Users.OrderByDescending(x => x.UserId).ToPagedList(page, 5);
-            return View("Users",users);
-        }
 
+            // Async metodunu await et
+            var users = await _userService.GetAllUsers();
+
+            // Şimdi ToPagedList çalışır
+            var pagedUsers = users.ToPagedList(page, 5);
+
+            return View("Users", pagedUsers);
+        }
         [HttpGet]
         public IActionResult CreateUser()
         {
@@ -40,20 +48,18 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
 
             if (!ModelState.IsValid)
             {
-                // Return the same view with the model so validation messages are shown
                 return View("CreateUser", createUserDto);
             }
 
             var createUser = _mapper.Map<User>(createUserDto);
-            await _context.Users.AddAsync(createUser);
-            await _context.SaveChangesAsync();
+            await _userService.Add(createUser);
             return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
         public async Task<IActionResult> EditUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userService.GetById(id);
             if (user == null) return NotFound();
             var userDto = _mapper.Map<UpdateUserDto>(user);
             return View("EditUser", userDto); 
@@ -68,13 +74,12 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
              
                 return View("EditUser", userDto);
             }
-            var existingUser = await _context.Users.FindAsync(userDto.UserId);
+            var existingUser =await _userService.GetById(userDto.UserId);
             if (existingUser == null) return NotFound();
 
-            _mapper.Map(userDto, existingUser);
+              _mapper.Map(userDto, existingUser);
 
-            _context.Users.Update(existingUser);
-            await _context.SaveChangesAsync();
+           await _userService.Update(existingUser);
             return RedirectToAction(nameof(Index));
         }
 
@@ -82,10 +87,9 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var findUser = await _context.Users.FindAsync(id);
+            var findUser = await _userService.GetById(id);
             if (findUser == null) return NotFound();
-            _context.Users.Remove(findUser);
-            await _context.SaveChangesAsync();
+              await _userService.Delete(id);    
             return RedirectToAction(nameof(Index));
         }
     }

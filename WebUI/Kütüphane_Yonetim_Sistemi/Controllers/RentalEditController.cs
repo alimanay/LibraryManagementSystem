@@ -25,8 +25,5 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
         }
 
 
-        
-
-
     }
 }

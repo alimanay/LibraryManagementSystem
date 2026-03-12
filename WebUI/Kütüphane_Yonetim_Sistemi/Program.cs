@@ -1,6 +1,10 @@
 using Entites.Dtos;
 using Infrastructure.ExternalServices.GoogleBooks;
 using Kütüphane_Yonetim_Sistemi.Context;
+using Kütüphane_Yonetim_Sistemi.DataAccsess.Abstract;
+using Kütüphane_Yonetim_Sistemi.DataAccsess.Concrete;
+using Kütüphane_Yonetim_Sistemi.Services.Abstract;
+using Kütüphane_Yonetim_Sistemi.Services.Concrete;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +17,12 @@ builder.Services.AddHttpClient<IGoogleBooksService, GoogleBooksService>(client =
     client.BaseAddress = new Uri("https://www.googleapis.com/books/v1/");
 });
 builder.Services.AddAutoMapper(typeof(GeneralMapping).Assembly);
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IRentalService, RentalService>();
+builder.Services.AddScoped<IRentalRepository, RentalRepository>();
 builder.Services.AddSession();
 var app = builder.Build();
 

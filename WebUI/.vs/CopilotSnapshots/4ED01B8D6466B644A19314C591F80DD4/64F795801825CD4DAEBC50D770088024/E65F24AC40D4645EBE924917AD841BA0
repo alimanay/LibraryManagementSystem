@@ -1,0 +1,13 @@
+﻿using Entites.Models;
+
+namespace Kütüphane_Yonetim_Sistemi.DataAccsess.Abstract
+{
+    public interface IBookRepository
+    {
+        List<Book> GetAllBooks();
+        Book GetById(int id);
+        void Add(Book book);
+        void Update(Book book);
+        void Delete(Book book);
+    }
+}

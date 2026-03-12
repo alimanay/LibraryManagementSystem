@@ -49,7 +49,11 @@
                     
 
                     <td class="text-center">
-                        @if (user.ReturnDate.HasValue && (user.ReturnDate.Value - user.RentDate).Days <0)
+                        @{
+                            int sayi = (user.ReturnDate.Value.Date - DateTime.Now.Date).Days;
+                        }
+                       
+                        @if (user.ReturnDate.HasValue && @sayi < 0)
                         { 
                             <span class="badge bg-danger">Gecikmiş Kitap </span>
                         }
