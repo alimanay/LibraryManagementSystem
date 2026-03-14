@@ -6,6 +6,22 @@
 }
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 
+@* TempData alertleri *@
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
 <table class="table table-bordered table-hover align-middle mb-0">
     <thead class="table-light text-center">
         <tr>
@@ -14,8 +30,8 @@
             <th>Yazarı</th>
             <th>Kiralanma Tarihi</th>
             <th>Teslim Tarihi</th>
-            <th style="width:120px">Durum</th>
-            <th style="width:180px">İşlemler</th>
+            <th style="width:130px">Durum</th>
+            <th style="width:250px">İşlemler</th>
         </tr>
     </thead>
 
@@ -26,7 +42,7 @@
             {
                 <tr>
                     <td class="fw-semibold">
-                        @user.User.Name  @user.User.Surname
+                        @user.User.Name @user.User.Surname
                     </td>
 
                     <td style="max-width:300px;">
@@ -37,59 +53,53 @@
                         @user.Book.Author
                     </td>
 
-                    <td>
-                        @user.RentDate.ToString("dd.MM.yyyy")
+                    <td>@user.RentDate.ToString("dd.MM.yyyy")</td>
 
-
-                    </td>
-                    <td>
-                        @user.ReturnDate?.ToString("dd.MM.yyyy")
-
-                    </td>
-                    
+                    <td>@user.ReturnDate?.ToString("dd.MM.yyyy")</td>
 
                     <td class="text-center">
-                        @{
-                            int sayi = (user.ReturnDate.Value.Date - DateTime.Now.Date).Days;
+                        @if (user.IsReturned)
+                        {
+                            <span class="badge bg-success">Teslim Edildi</span>
                         }
-                       
-                        @if (user.ReturnDate.HasValue && @sayi < 0)
-                        { 
-                            <span class="badge bg-danger">Gecikmiş Kitap </span>
+                        else if (user.ReturnDate.HasValue && (user.ReturnDate.Value.Date - DateTime.Now.Date).Days < 0)
+                        {
+                            <span class="badge bg-danger">Gecikmiş</span>
                         }
                         else
                         {
-                            @if (user.IsReturned)
-                            {
-                                <span class="badge bg-success">Aktif</span>
-                            }
-                            else
-                            {
-                                <span class="badge bg-secondary">Kirada</span>
-                            }
+                            <span class="badge bg-secondary">Kirada</span>
                         }
                     </td>
 
                     <!-- İŞLEMLER -->
-                    <td class="text-center">
+                    <td class="text-center" style="white-space:nowrap;">
+                        <div class="d-flex justify-content-center gap-1">
 
-                        <a asp-controller="RentalEdit"
-                           asp-action="EditLoan"
-                           asp-route-id="@user.Id"
-                           class="btn btn-sm btn-warning">✏️ Düzenle</a>
+                            @if (!user.IsReturned)
+                            {
+                                <button type="button"
+                                        class="btn btn-sm btn-success"
+                                        onclick="openReturnModal(@user.Id, '@user.User.Name @user.User.Surname', '@user.Book.Title')">
+                                    ✅ Teslim Al
+                                </button>
+                            }
 
-                        <form asp-controller="RentalEdit"
-                              asp-action="DeleteRental"
-                              asp-route-id="@user.Id"
-                              method="post"
-                              class="d-inline"
-                              onsubmit="return confirm('@user.User.Name @user.User.Surname kullanıcısını silmek istiyor musunuz?');">
-                            @Html.AntiForgeryToken()
-                            <button type="submit" class="btn btn-danger btn-sm">
+                            <a asp-controller="RentalEdit"
+                               asp-action="EditLoan"
+                               asp-route-id="@user.Id"
+                               class="btn btn-sm"
+                               style="background-color:#6f42c1; color:white; border:none;">
+                                ✏️ Güncelle
+                            </a>
+
+                            <button type="button"
+                                    class="btn btn-sm btn-danger"
+                                    onclick="openDeleteModal(@user.Id, '@user.User.Name @user.User.Surname', '@user.Book.Title')">
                                 🗑️ Sil
-                            </button> 
-                         </form> 
+                            </button>
 
+                        </div>
                     </td>
                 </tr>
             }
@@ -97,20 +107,70 @@
         else
         {
             <tr>
-                <td colspan="5" class="text-center py-4 text-muted">
-                    📭 Kayıtlı kullanıcı bulunamadı
+                <td colspan="7" class="text-center py-4 text-muted">
+                    📭 Kayıtlı kiralama bulunamadı
                 </td>
             </tr>
         }
     </tbody>
-
 </table>
- <div class="mt-3 d-flex justify-content-center">
-     @Html.PagedListPager(Model, page => Url.Action("Index", new { pageNo = page }),
+
+<div class="mt-3 d-flex justify-content-center">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { pageNo = page }),
     new PagedListRenderOptions
     {
         LiElementClasses = new[] { "page-item" },
         PageClasses = new[] { "page-link" }
     })
-</div> 
+</div>
 
+<!-- TESLİM AL MODAL -->
+<div class="modal fade" id="returnModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title">✅ Kitap Teslim Al</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-1"><strong>Kullanıcı:</strong> <span id="returnUserName"></span></p>
+                <p class="mb-3"><strong>Kitap:</strong> <span id="returnBookTitle"></span></p>
+                <p class="text-muted mb-0">Bu kitabı teslim almak istiyor musunuz?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                <form id="returnForm" method="post" class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-success">✅ Evet, Teslim Al</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SİL MODAL -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">🗑️ Kaydı Sil</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-1"><strong>Kullanıcı:</strong> <span id="deleteUserName"></span></p>
+                <p class="mb-3"><strong>Kitap:</strong> <span id="deleteBookTitle"></span></p>
+                <p class="text-danger mb-0">⚠️ Bu işlem geri alınamaz. Silmek istiyor musunuz?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                <form id="deleteForm" method="post" class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger">🗑️ Evet, Sil</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* JS en sonda — Bootstrap yüklendikten sonra çalışsın *@
+<script src="~/js/RentalDetail.js"></script>

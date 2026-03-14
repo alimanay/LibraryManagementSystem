@@ -1,25 +1,36 @@
 ﻿@model X.PagedList.IPagedList<Entites.Models.User>
 @using X.PagedList.Mvc.Core
 @using X.PagedList
-
 @{
     Layout = "_Book";
 }
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
 
-<div class="d-flex">
-    
-   <div class=" p-2 ms-auto">
-        <a asp-controller="User"
-           asp-action="CreateUser" class="btn btn-outline-dark">
+<div class="d-flex mb-3">
+    <div class="p-2 ms-auto">
+        <a asp-controller="User" asp-action="CreateUser" class="btn btn-outline-dark">
             Kullanıcı Oluştur 👤
-       </a>
-   </div>
+        </a>
+    </div>
 </div>
+
 <div class="card shadow-sm">
     <div class="card-body p-0">
-
         <table class="table table-bordered table-hover align-middle mb-0">
             <thead class="table-light text-center">
                 <tr>
@@ -27,29 +38,18 @@
                     <th>Email</th>
                     <th>Numara</th>
                     <th style="width:120px">Durum</th>
-                    <th style="width:180px">İşlemler</th>
+                    <th style="width:200px">İşlemler</th>
                 </tr>
             </thead>
-
             <tbody>
                 @if (Model != null && Model.Any())
                 {
                     foreach (var user in Model)
                     {
                         <tr>
-                            <td class="fw-semibold">
-                                @user.Name @user.Surname
-                            </td>
-
-                            <td style="max-width:300px;">
-                                @user.Email
-                            </td>
-
-                            <td>
-                                @user.PhoneNumber
-                                
-                            </td>
-
+                            <td class="fw-semibold">@user.Name @user.Surname</td>
+                            <td>@user.Email</td>
+                            <td>@user.PhoneNumber</td>
                             <td class="text-center">
                                 @if (user.IsActive)
                                 {
@@ -60,29 +60,24 @@
                                     <span class="badge bg-secondary">Pasif</span>
                                 }
                             </td>
+                            <td class="text-center" style="white-space:nowrap;">
+                                <div class="d-flex justify-content-center gap-1">
 
-                            <!-- İŞLEMLER -->
-                            <td class="text-center">
+                                    <a asp-controller="User"
+                                       asp-action="EditUser"
+                                       asp-route-id="@user.UserId"
+                                       class="btn btn-sm"
+                                       style="background-color:#6f42c1; color:white; border:none;">
+                                        ✏️ Güncelle
+                                    </a>
 
-                                <a asp-controller="User"
-                                   asp-action="EditUser"
-                                   asp-route-id="@user.UserId"
-                                   class="btn btn-warning btn-sm me-1">
-                                    ✏️ Düzenle
-                                </a>
-
-                                <form asp-controller="User"
-                                      asp-action="DeleteUser"
-                                      asp-route-id="@user.UserId"
-                                      method="post"
-                                      class="d-inline"
-                                      onsubmit="return confirm('@user.Name @user.Surname kullanıcısını silmek istiyor musunuz?');">
-                                    @Html.AntiForgeryToken()
-                                    <button type="submit" class="btn btn-danger btn-sm">
+                                    <button type="button"
+                                            class="btn btn-sm btn-danger"
+                                            onclick="openDeleteModal(@user.UserId, '@user.Name @user.Surname')">
                                         🗑️ Sil
                                     </button>
-                                </form>
 
+                                </div>
                             </td>
                         </tr>
                     }
@@ -96,8 +91,8 @@
                     </tr>
                 }
             </tbody>
-
         </table>
+
         <div class="mt-3 d-flex justify-content-center">
             @Html.PagedListPager(Model, page => Url.Action("Index", new { pageNo = page }),
             new PagedListRenderOptions
@@ -106,6 +101,29 @@
                 PageClasses = new[] { "page-link" }
             })
         </div>
-
     </div>
 </div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">🗑️ Kullanıcıyı Sil</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-3"><strong>Kullanıcı:</strong> <span id="deleteUserName"></span></p>
+                <p class="text-danger mb-0">⚠️ Bu işlem geri alınamaz. Silmek istiyor musunuz?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                <form id="deleteForm" method="post" class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger">🗑️ Evet, Sil</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/User.js"></script>

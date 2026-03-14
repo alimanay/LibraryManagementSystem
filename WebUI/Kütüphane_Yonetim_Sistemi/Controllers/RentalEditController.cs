@@ -144,6 +144,21 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ReturnRental(int id)
+        {
+            var rental = await _rentalService.GetRentalByIdAsync(id);
+
+            rental.IsReturned = true;    
+            rental.ReturnDate = DateTime.Now; 
+
+            await _rentalService.UpdateAsync(rental);
+
+            TempData["Success"] = "Kitap teslim alındı.";
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteRental(int id)
         {
             var findUser = await _rentalService.GetRentalByIdAsync(id);
