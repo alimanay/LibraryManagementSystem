@@ -33,7 +33,7 @@
         </a>
          <div class="nav-item dropdown">
             <a class="d-block p-2 text-green
-               text-decoration-none dropdown-toggle @(currentController == "Rental" ? "active" : "")"
+               text-decoration-none dropdown-toggle"
                href="#"
                id="rentalDropdown"
                role="button"
@@ -43,16 +43,16 @@
             </a>
             <ul class="dropdown-menu text-dark " style="background-color:#2c3e50" aria-labelledby="rentalDropdown">
                 <li>
-                    <a class="dropdown-item " asp-controller="Rental" asp-action="Index">Kitap Kiralama</a>
+                    <a class="dropdown-item  @(currentController == "Rental" ? "active" : "")" asp-controller="Rental" asp-action="Index">Kitap Kiralama</a>
                 </li>
                 <li>
-                    <a class="dropdown-item " asp-controller="RentalEdit" asp-action="Index">Kitap Kiralama Düzenleme</a>
+                    <a class="dropdown-item   @(currentController == "RentalEdit" ? "active" : "")" asp-controller="RentalEdit" asp-action="Index">Kitap Kiralama Düzenleme</a>
                 </li>
                 <li>
-                    <a class="dropdown-item " asp-controller="Rental" asp-action="Index">Teslim Edilenler</a>
+                    <a class="dropdown-item @(currentController == "ReturnedRental" ? "active" : "")" asp-controller="ReturnedRental" asp-action="Index">Teslim Edilenler</a>
                 </li>
                 <li>
-                    <a class="dropdown-item " asp-controller="Rental" asp-action="Index">Gecikmiş Kayıtlar</a>
+                    <a class="dropdown-item @(currentController == "RentalOverdue" ? "active" : "") " asp-controller="RentalOverdue" asp-action="Index">Gecikmiş Kayıtlar</a>
                 </li>
             </ul>
         </div>

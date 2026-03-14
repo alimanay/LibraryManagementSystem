@@ -14,7 +14,7 @@ namespace Kütüphane_Yonetim_Sistemi.DataAccsess.Concrete
 
         public async Task<List<Rental>> GetAllRentalAsync()
         {
-            return await _context.Rentals.ToListAsync();
+            return await _context.Rentals.Include(r => r.Book).Include(b => b.User).ToListAsync();
         }
 
         public async Task<Rental?> GetRentalByIdAsync(int id)
@@ -38,6 +38,11 @@ namespace Kütüphane_Yonetim_Sistemi.DataAccsess.Concrete
         {
             _context.Rentals.Remove(rental);
             await _context.SaveChangesAsync();
+        }
+
+        public Task<List<Rental>> GetReturnedRentals()
+        {
+          return   _context.Rentals.Where(x => x.IsReturned == true).Include(r => r.Book).Include(r => r.User).ToListAsync();
         }
     }
 }

@@ -38,6 +38,11 @@ namespace Kütüphane_Yonetim_Sistemi.Services.Concrete
             return _rentalRepository.GetRentalByIdAsync(id);
         }
 
+        public Task<List<Rental>> GetReturnedRentals()
+        {
+           return _rentalRepository.GetReturnedRentals();
+        }
+
         public async Task UpdateAsync(Rental rental)
         {
            await _rentalRepository.UpdateAsync(rental);

@@ -9,5 +9,6 @@ namespace Kütüphane_Yonetim_Sistemi.DataAccsess.Abstract
         Task AddAsync(Rental rental);
         Task UpdateAsync(Rental rental);
         Task DeleteAsync(Rental rental);
+        Task<List<Rental>> GetReturnedRentals();
     }
 }
