@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\context\\librarycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\context\\librarycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Context\\LibraryContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:K\u00FCt\u00FCphane_Yonetim_Sistemi\\Context\\LibraryContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B6C1B939-8C0F-41AB-A076-735125D77081}|Infrastructure\\Infrastructure.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\infrastructure\\externalservices\\dtos\\googleresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -86,10 +86,8 @@
               "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Context\\LibraryContext.cs",
               "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Context\\LibraryContext.cs",
               "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Context\\LibraryContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-31T01:12:57.228Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-31T01:12:57.228Z"
             },
             {
               "$type": "Document",
