@@ -38,7 +38,7 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
             if (isAdmin)
             {
                 HttpContext.Session.SetString("Admin", user.Name);
-                return RedirectToAction("Index", "Book");
+                return RedirectToAction("Index", "Dashboard");
             }
             else
             {

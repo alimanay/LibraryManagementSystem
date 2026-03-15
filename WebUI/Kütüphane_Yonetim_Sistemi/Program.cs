@@ -1,3 +1,7 @@
+using DataAccess.DataAccsess.Abstract;
+using DataAccess.DataAccsess.Concrete;
+using DataAccess.Services.Abstract;
+using DataAccess.Services.Concrete;
 using Entites.Dtos;
 using Infrastructure.ExternalServices.GoogleBooks;
 using Kütüphane_Yonetim_Sistemi.Context;
@@ -23,6 +27,9 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IRentalService, RentalService>();
 builder.Services.AddScoped<IRentalRepository, RentalRepository>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
+builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
+
 builder.Services.AddSession();
 var app = builder.Build();
 
