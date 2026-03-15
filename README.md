@@ -1,74 +1,84 @@
-📚 Library Management System (ASP.NET Core MVC)
-Bu proje, modern yazılım mimarileri ve best-practice'ler kullanılarak geliştirilmiş kapsamlı bir kütüphane yönetim sistemidir. Kullanıcıların kitap ödünç alma süreçlerini yönetmek, kitap envanterini takip etmek ve dış API'lar ile entegrasyon sağlamak amacıyla tasarlanmıştır.
+# 📚 Library Management System
 
-🚀 Öne Çıkan Özellikler
+![.NET](https://img.shields.io/badge/.NET%208-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+![MSSQL](https://img.shields.io/badge/MSSQL-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
+![Entity Framework](https://img.shields.io/badge/EF%20Core-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
 
-N-Tier Architecture: Data Access, Business, ve UI katmanları ile modüler yapı.
+Bu proje, modern yazılım mimarileri ve best-practice'ler kullanılarak geliştirilmiş kapsamlı bir **kütüphane yönetim sistemidir**. Kullanıcıların kitap ödünç alma süreçlerini yönetmek, envanter takibi yapmak ve dış API entegrasyonları ile veri çekmek amacıyla tasarlanmıştır.
 
+---
 
-API Entegrasyonu: Google Books API kullanılarak kitap bilgilerinin otomatik çekilmesi.
+## 🚀 Öne Çıkan Özellikler
 
+* **N-Tier Architecture:** Data Access, Business ve WebUI katmanları ile modüler ve sürdürülebilir yapı.
+* **API Entegrasyonu:** Google Books API kullanılarak kitap bilgilerinin dinamik olarak çekilmesi.
+* **Gelişmiş CRUD:** Kitaplar, yazarlar ve kullanıcılar için tam fonksiyonel yönetim paneli.
+* **Ödünç Alma Mekanizması:** Kitap ödünç alma ve iade işlemlerini geçmiş kayıtlarıyla birlikte tutan sistem.
+* **Veri Doğrulama:** Fluent Validation kütüphanesi ile güvenli ve kurallı veri girişi.
 
-Gelişmiş CRUD: Kitap, yazar ve kullanıcı yönetimi için tam fonksiyonel işlemler.
+---
 
+## 🛠️ Kullanılan Teknolojiler
 
-Ödünç Alma Sistemi: Geçmiş kayıtları tutan dinamik kitap ödünç/iade mekanizması.
+### **Backend**
+* **Framework:** ASP.NET Core MVC (.NET 8)
+* **ORM:** Entity Framework Core
+* **Database:** MSSQL
+* **Design Patterns:** Repository Pattern, Dependency Injection
+* **Kütüphaneler:** AutoMapper, Fluent Validation
 
+### **Frontend**
+* **UI Framework:** Bootstrap
+* **Diller:** HTML5, CSS3, JavaScript
 
-Validasyon: Fluent Validation ile güvenli ve kurallı veri girişi.
+---
 
-🛠️ Kullanılan Teknolojiler
+## 📂 Proje Yapısı (N-Tier Architecture)
 
-Framework: .NET 8 / ASP.NET Core MVC 
+Proje, sorumlulukların ayrılması prensibine göre aşağıdaki katmanlardan oluşmaktadır:
 
+| Katman | Sorumluluk |
+| :--- | :--- |
+| **Core / Entities** | Veritabanı modelleri (Entities) ve veri transfer nesneleri (DTOs).  |
+| **Infrastructure** | Google Books API gibi dış servis entegrasyonlarının yönetimi.  |
+| **DataAccess** | Context yapısı, Repository implementasyonları ve Business Servisleri.  |
+| **WebUI** | Kullanıcı arayüzü, View'lar ve Controller mantığı.  |
 
-ORM: Entity Framework Core 
+---
 
+## ⚙️ Kurulum ve Çalıştırma
 
-Database: MSSQL 
+Projeyi yerel makinenizde ayağa kaldırmak için şu adımları izleyin:
 
-
-UI: Bootstrap, HTML5, CSS3, JavaScript 
-
-
-Tools: AutoMapper, Dependency Injection, Repository Pattern 
-
-⚙️ Kurulum ve Çalıştırma
-Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
-
-1. Repoyu Klonlayın
-Bash
-git clone https://github.com/alimanay/LibraryManagementSystem.git
+### 1. Repoyu Klonlayın
+```bash
+git clone [https://github.com/alimanay/LibraryManagementSystem.git](https://github.com/alimanay/LibraryManagementSystem.git)
 cd LibraryManagementSystem
-2. Veritabanı Yapılandırması
-LibraryManagementSystem.WebUI projesindeki appsettings.json dosyasını açın ve ConnectionStrings bölümünü kendi yerel SQL Server bilgilerinizle güncelleyin:
+
+-------------------------------------------------------------------------------------------------------------------------
+2. Veritabanı Ayarları
+LibraryManagementSystem.WebUI projesindeki appsettings.json dosyasını kendi SQL Server bilgilerinize göre güncelleyin:
 
 JSON
 "ConnectionStrings": {
   "DefaultConnection": "Server=YOUR_SERVER_NAME;Database=LibraryDb;Trusted_Connection=True;TrustServerCertificate=True;"
 }
-3. Migration Uygulama
-Visual Studio'da Package Manager Console'u açın ve veritabanını oluşturmak için şu komutu çalıştırın:
+-------------------------------------------------------------------------------------------------------------------------
 
+3. Migration ve Güncelleme
+Package Manager Console üzerinden veritabanını oluşturun:
 PowerShell
 Update-Database
-4. Projeyi Başlatın
-Visual Studio üzerinden F5 tuşuna basarak veya terminalden aşağıdaki komutla projeyi ayağa kaldırabilirsiniz:
 
+4. Çalıştırın
 Bash
 dotnet run --project LibraryManagementSystem.WebUI
-📂 Proje Yapısı (Architecture)
-Core / Entities: Veritabanı tablolarının modelleri.
-
-
-DataAccess: Veritabanı bağlantısı ve Repository implementasyonları.
-
-
-Business: İş mantığı, servisler ve doğrulama (validation) kuralları.
-
-
-WebUI: Kullanıcı arayüzü ve Controller yapıları.
-
 🤝 İletişim
+Ali Manay - Jr. Backend Developer
 
-Ali Manay - LinkedIn - alimanayhs@gmail.com
+E-posta: alimanayhs@gmail.com
+
+LinkedIn: linkedin.com/in/alimanay
+
+GitHub: github.com/alimanay
