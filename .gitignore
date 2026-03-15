@@ -56,3 +56,5 @@ nunit-*.xml
 
 # Security
 appsettings.Development.json
+# Visual Studio cache
+.vs/
