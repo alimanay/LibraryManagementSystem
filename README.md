@@ -57,13 +57,23 @@ git clone [https://github.com/alimanay/LibraryManagementSystem.git](https://gith
 cd LibraryManagementSystem
 
 -------------------------------------------------------------------------------------------------------------------------
-2. Veritabanı Ayarları
-LibraryManagementSystem.WebUI projesindeki appsettings.json dosyasını kendi SQL Server bilgilerinize göre güncelleyin:
+2. Bağlantı Ayarları
 
-JSON
-"ConnectionStrings": {
-  "DefaultConnection": "Server=YOUR_SERVER_NAME;Database=LibraryDb;Trusted_Connection=True;TrustServerCertificate=True;"
+`appsettings.Development.json` dosyası güvenlik nedeniyle repoya eklenmemiştir.
+`WebUI` klasörü içine `appsettings.Development.json` adında bir dosya oluşturun ve aşağıdaki içeriği yapıştırın:
+```json
+{
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "sqlConnection": "Server=YOUR_SERVER;Database=LibrarySystemDb;Trusted_Connection=True;TrustServerCertificate=True;"
+  },
+  "GoogleBooks": {
+    "ApiKey": "YOUR_GOOGLE_BOOKS_API_KEY"
+  }
 }
+```
+
+> Google Books API key almak için: https://console.cloud.google.com
 -------------------------------------------------------------------------------------------------------------------------
 
 3. Migration ve Güncelleme
