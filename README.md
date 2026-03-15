@@ -63,6 +63,12 @@ cd LibraryManagementSystem
 `WebUI` klasörü içine `appsettings.Development.json` adında bir dosya oluşturun ve aşağıdaki içeriği yapıştırın:
 ```json
 {
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
   "AllowedHosts": "*",
   "ConnectionStrings": {
     "sqlConnection": "Server=YOUR_SERVER;Database=LibrarySystemDb;Trusted_Connection=True;TrustServerCertificate=True;"
