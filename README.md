@@ -22,7 +22,7 @@ Bu proje, modern yazılım mimarileri ve best-practice'ler kullanılarak gelişt
 ## 🛠️ Kullanılan Teknolojiler
 
 ### **Backend**
-* **Framework:** ASP.NET Core MVC (.NET 8)
+* **Framework:** ASP.NET Core MVC (.NET 9)
 * **ORM:** Entity Framework Core
 * **Database:** MSSQL
 * **Design Patterns:** Repository Pattern, Dependency Injection
