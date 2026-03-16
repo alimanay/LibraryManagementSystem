@@ -84,7 +84,7 @@ cd LibraryManagementSystem
 
 3. Migration ve Güncelleme
 Package Manager Console üzerinden veritabanını oluşturun:
-Update-Database  yazaraka Db yi güncelleyin
+Update-Database  yazarak Db yi güncelleyin
 
 4. Çalıştırın
 Bash
