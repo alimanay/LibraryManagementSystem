@@ -4,144 +4,155 @@
 @{
     Layout = "_Book";
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/css/RentalDetail.css" rel="stylesheet" />
 
-@* TempData alertleri *@
 @if (TempData["Error"] != null)
 {
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        @TempData["Error"]
+    <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>@TempData["Error"]
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 }
 @if (TempData["Success"] != null)
 {
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        @TempData["Success"]
+    <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>@TempData["Success"]
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 }
 
-<table class="table table-bordered table-hover align-middle mb-0">
-    <thead class="table-light text-center">
-        <tr>
-            <th>Adı Soyadı</th>
-            <th>Kitap Adı</th>
-            <th>Yazarı</th>
-            <th>Kiralanma Tarihi</th>
-            <th>Teslim Tarihi</th>
-            <th style="width:130px">Durum</th>
-            <th style="width:250px">İşlemler</th>
-        </tr>
-    </thead>
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="mb-2">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Ana Sayfa</a></li>
+        <li class="breadcrumb-item active">Kiralama Listesi</li>
+    </ol>
+</nav>
 
-    <tbody>
-        @if (Model != null && Model.Any())
-        {
-            foreach (var user in Model)
-            {
+<!-- Header -->
+<div class="d-flex align-items-center justify-content-between mb-3">
+    <div>
+        <h4 class="fw-bold mb-0"><i class="bi bi-journal-text text-primary me-2"></i>Kiralama Listesi</h4>
+        <small class="text-muted">Toplam <strong>@Model.TotalItemCount</strong> kayıt</small>
+    </div>
+    <a asp-controller="Rental" asp-action="Index" class="btn btn-primary btn-sm">
+        <i class="bi bi-plus-lg me-1"></i> Yeni Kiralama
+    </a>
+</div>
+
+<!-- Tablo -->
+<div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
                 <tr>
-                    <td class="fw-semibold">
-                        @user.User.Name @user.User.Surname
-                    </td>
-
-                    <td style="max-width:300px;">
-                        @user.Book.Title
-                    </td>
-
-                    <td style="max-width:300px;">
-                        @user.Book.Author
-                    </td>
-
-                    <td>@user.RentDate.ToString("dd.MM.yyyy")</td>
-
-                    <td>@user.ReturnDate?.ToString("dd.MM.yyyy")</td>
-
-                    <td class="text-center">
-                        @if (user.IsReturned)
-                        {
-                            <span class="badge bg-success">Teslim Edildi</span>
-                        }
-                        else if (user.ReturnDate.HasValue && (user.ReturnDate.Value.Date - DateTime.Now.Date).Days < 0)
-                        {
-                            <span class="badge bg-danger">Gecikmiş</span>
-                        }
-                        else
-                        {
-                            <span class="badge bg-secondary">Kirada</span>
-                        }
-                    </td>
-
-                    <!-- İŞLEMLER -->
-                    <td class="text-center" style="white-space:nowrap;">
-                        <div class="d-flex justify-content-center gap-1">
-
-                            @if (!user.IsReturned)
-                            {
-                                <button type="button"
-                                        class="btn btn-sm btn-success"
-                                        onclick="openReturnModal(@user.Id, '@user.User.Name @user.User.Surname', '@user.Book.Title')">
-                                    ✅ Teslim Al
-                                </button>
-                            }
-
-                            <a asp-controller="RentalEdit"
-                               asp-action="EditLoan"
-                               asp-route-id="@user.Id"
-                               class="btn btn-sm"
-                               style="background-color:#6f42c1; color:white; border:none;">
-                                ✏️ Güncelle
-                            </a>
-
-                            <button type="button"
-                                    class="btn btn-sm btn-danger"
-                                    onclick="openDeleteModal(@user.Id, '@user.User.Name @user.User.Surname', '@user.Book.Title')">
-                                🗑️ Sil
-                            </button>
-
-                        </div>
-                    </td>
+                    <th>Üye</th>
+                    <th>Kitap</th>
+                    <th>Yazar</th>
+                    <th class="text-center">Kiralama</th>
+                    <th class="text-center">Teslim</th>
+                    <th style="width:110px" class="text-center">Durum</th>
+                    <th style="width:220px" class="text-center">İşlemler</th>
                 </tr>
-            }
-        }
-        else
-        {
-            <tr>
-                <td colspan="7" class="text-center py-4 text-muted">
-                    📭 Kayıtlı kiralama bulunamadı
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="user-avatar">
+                                        @item.User.Name.Substring(0, 1).ToUpper()
+                                    </div>
+                                    <span class="fw-semibold">@item.User.Name @item.User.Surname</span>
+                                </div>
+                            </td>
+                            <td class="text-muted" style="max-width:220px;">@item.Book.Title</td>
+                            <td class="text-muted small">@item.Book.Author</td>
+                            <td class="text-center small">@item.RentDate.ToString("dd.MM.yyyy")</td>
+                            <td class="text-center small">@item.ReturnDate?.ToString("dd.MM.yyyy")</td>
+                            <td class="text-center">
+                                @if (item.IsReturned)
+                                {
+                                    <span class="status-badge returned">Teslim</span>
+                                }
+                                else if (item.ReturnDate.HasValue && (item.ReturnDate.Value.Date - DateTime.Now.Date).Days < 0)
+                                {
+                                    <span class="status-badge overdue">Gecikmiş</span>
+                                }
+                                else
+                                {
+                                    <span class="status-badge rented">Kirada</span>
+                                }
+                            </td>
+                            <td class="text-center" style="white-space:nowrap;">
+                                <div class="d-flex justify-content-center gap-1">
+                                    @if (!item.IsReturned)
+                                    {
+                                        <button type="button"
+                                                class="btn btn-sm btn-outline-success"
+                                                onclick="openReturnModal(@item.Id, '@item.User.Name @item.User.Surname', '@Html.Raw(item.Book.Title?.Replace("'", "\\'"))')">
+                                            <i class="bi bi-check-lg"></i> Teslim
+                                        </button>
+                                    }
+                                    <a asp-controller="RentalEdit"
+                                           asp-action="EditLoan"
+                                           asp-route-id="@item.Id"
+                                           class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <button type="button"
+                                            class="btn btn-sm btn-outline-danger"
+                                            onclick="openDeleteModal(@item.Id, '@item.User.Name @item.User.Surname', '@Html.Raw(item.Book.Title?.Replace("'", "\\'"))')">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="7" class="text-center py-5 text-muted">
+                            📭 Kayıtlı kiralama bulunamadı
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 
-<div class="mt-3 d-flex justify-content-center">
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { pageNo = page }),
-    new PagedListRenderOptions
-    {
-        LiElementClasses = new[] { "page-item" },
-        PageClasses = new[] { "page-link" }
-    })
+        <div class="py-3 d-flex justify-content-center">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { pageNo = page }),
+                new PagedListRenderOptions
+                {
+                    LiElementClasses = new[] { "page-item" },
+                    PageClasses = new[] { "page-link" }
+                })
+        </div>
+    </div>
 </div>
 
 <!-- TESLİM AL MODAL -->
 <div class="modal fade" id="returnModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:420px;">
         <div class="modal-content border-0 shadow">
             <div class="modal-header bg-success text-white">
-                <h5 class="modal-title">✅ Kitap Teslim Al</h5>
+                <h6 class="modal-title"><i class="bi bi-check-circle me-2"></i>Kitap Teslim Al</h6>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 <p class="mb-1"><strong>Kullanıcı:</strong> <span id="returnUserName"></span></p>
-                <p class="mb-3"><strong>Kitap:</strong> <span id="returnBookTitle"></span></p>
-                <p class="text-muted mb-0">Bu kitabı teslim almak istiyor musunuz?</p>
+                <p class="mb-2"><strong>Kitap:</strong> <span id="returnBookTitle"></span></p>
+                <p class="text-muted small mb-0">Bu kitabı teslim almak istiyor musunuz?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Vazgeç</button>
                 <form id="returnForm" method="post" class="d-inline">
                     @Html.AntiForgeryToken()
-                    <button type="submit" class="btn btn-success">✅ Evet, Teslim Al</button>
+                    <button type="submit" class="btn btn-success btn-sm">Evet, Teslim Al</button>
                 </form>
             </div>
         </div>
@@ -150,27 +161,26 @@
 
 <!-- SİL MODAL -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:420px;">
         <div class="modal-content border-0 shadow">
             <div class="modal-header bg-danger text-white">
-                <h5 class="modal-title">🗑️ Kaydı Sil</h5>
+                <h6 class="modal-title"><i class="bi bi-trash me-2"></i>Kaydı Sil</h6>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 <p class="mb-1"><strong>Kullanıcı:</strong> <span id="deleteUserName"></span></p>
-                <p class="mb-3"><strong>Kitap:</strong> <span id="deleteBookTitle"></span></p>
-                <p class="text-danger mb-0">⚠️ Bu işlem geri alınamaz. Silmek istiyor musunuz?</p>
+                <p class="mb-2"><strong>Kitap:</strong> <span id="deleteBookTitle"></span></p>
+                <p class="text-danger small mb-0">⚠️ Bu işlem geri alınamaz.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Vazgeç</button>
                 <form id="deleteForm" method="post" class="d-inline">
                     @Html.AntiForgeryToken()
-                    <button type="submit" class="btn btn-danger">🗑️ Evet, Sil</button>
+                    <button type="submit" class="btn btn-danger btn-sm">Evet, Sil</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-@* JS en sonda — Bootstrap yüklendikten sonra çalışsın *@
 <script src="~/js/RentalDetail.js"></script>

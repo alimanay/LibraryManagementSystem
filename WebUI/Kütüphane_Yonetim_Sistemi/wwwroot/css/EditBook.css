@@ -1,148 +1,47 @@
-﻿/* ============================= */
-/* GENEL CONTAINER */
-/* ============================= */
-.container-fluid {
-  
-    margin: auto;
-
+﻿/* Breadcrumb */
+.breadcrumb {
+    font-size: 0.83rem;
+    background: none;
+    padding: 0;
+    margin: 0;
 }
 
-/* ============================= */
-/* KART TASARIMI */
-/* ============================= */
-.update-card {
-    border-radius: 16px;
-    background: #ffffff;
-    padding: 20px;
-    transition: all 0.3s ease;
-
-    
+.breadcrumb-item a {
+    color: #6c757d;
+    text-decoration: none;
 }
 
-    .update-card:hover {
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+    .breadcrumb-item a:hover {
+        color: #0d6efd;
     }
 
-    /* ============================= */
-    /* ROW DÜZEN */
-    /* ============================= */
-    .update-card .row {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
+.breadcrumb-item.active {
+    color: #343a40;
+    font-weight: 500;
+}
 
-        .update-card .row > div {
-            padding-left: 12px;
-            padding-right: 12px;
-        }
-
-/* ============================= */
-/* LABEL */
-/* ============================= */
-.form-label {
-    font-weight: 600;
+/* Form */
+.form-control {
+    border-radius: 8px;
+    border: 1.5px solid #e2e8f0;
+    padding: 9px 14px;
     font-size: 0.9rem;
-    margin-bottom: 6px;
-    color: #2c3e50;
-
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* ============================= */
-/* INPUT & TEXTAREA */
-/* ============================= */
-.modern-input {
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid #dcdcdc;
-    padding: 12px 14px;
-    font-size: 0.95rem;
-    transition: all 0.25s ease;
-    background-color: #fff;
-
-}
-
-    .modern-input:focus {
-        border-color: #3f72af;
-        box-shadow: 0 0 0 3px rgba(63, 114, 175, 0.15);
-        transform: scale(1.01);
-        outline: none;
+    .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
     }
 
-textarea.modern-input {
-    resize: vertical;
-    min-height: 130px;
+/* Card */
+.card {
+    border-radius: 12px;
 }
 
-/* ============================= */
-/* BUTON ALANI */
-/* ============================= */
-.update-card .d-flex {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 15px;
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 1px solid #f0f0f0;
-    flex-wrap: wrap;
-}
-
-/* Ortak Buton Stili */
-.update-card .btn {
-    min-width: 140px;
-    padding: 11px 26px;
-    border-radius: 10px;
-    font-weight: 600;
-    transition: all 0.25s ease;
+/* Switch */
+.form-check-input {
+    width: 2.4em;
+    height: 1.2em;
     cursor: pointer;
-    text-align: center;
-}
-
-/* ============================= */
-/* VAZGEÇ BUTONU (Soft Gri) */
-/* ============================= */
-.btn-light {
-    background: #f1f3f5;
-    border: 1px solid #dee2e6;
-    color: #495057;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
-}
-
-    .btn-light:hover {
-        background: #e9ecef;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-    }
-
-/* ============================= */
-/* GÜNCELLE BUTONU (Ana Aksiyon) */
-/* ============================= */
-.btn-primary {
-    background: linear-gradient(135deg, #3f72af, #2c5282);
-    border: none;
-    color: #ffffff;
-    box-shadow: 0 4px 12px rgba(63, 114, 175, 0.25);
-}
-
-    .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 22px rgba(63, 114, 175, 0.35);
-    }
-/* ============================= */
-/* RESPONSIVE */
-/* ============================= */
-@media (max-width: 768px) {
-
-    .col-md-6 {
-        width: 100%;
-    }
-
-    .update-card .d-flex {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .update-card .btn {
-        width: 100%;
-    }
 }

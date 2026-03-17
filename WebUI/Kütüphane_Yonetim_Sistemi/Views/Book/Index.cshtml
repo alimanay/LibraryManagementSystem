@@ -4,154 +4,167 @@
 @{
     Layout = "_Book";
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/css/Book.css" rel="stylesheet" />
 
-<div class="container-fluid px-4 mt-4">
-
-    @if (TempData["Error"] != null)
-    {
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            @TempData["Error"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-    }
-    @if (TempData["Success"] != null)
-    {
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            @TempData["Success"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-    }
-
- 
-    <div class="card mb-4 shadow-sm">
-        <div class="card-body">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h3 class="fw-bold mb-0">Kitap Yönetimi</h3>
-                    <small class="text-muted">Kitap ekle, sil ve yönet</small>
-                </div>
-                <div class="col-md-6 text-end">
-                    <form asp-action="CreateBook" method="post" class="d-inline-flex">
-                        <input type="text"
-                               name="query"
-                               class="form-control me-2"
-                               placeholder="ISBN veya Kitap İsmi Giriniz"
-                               required />
-                        <button class="btn btn-dark">Ekle</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>@TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>@TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
 
-    <!-- Tablo -->
-    <div class="card shadow-sm">
-        <div class="card-body p-0">
-            <table class="table table-bordered table-hover align-middle mb-0">
-                <thead class="table-secondary text-center">
-                    <tr>
-                        <th style="width:100px">Kapak</th>
-                        <th>Kitap Adı</th>
-                        <th>Açıklama</th>
-                        <th>Yazar</th>
-                        <th style="width:110px">Durum</th>
-                        <th style="width:180px">İşlemler</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model != null && Model.Any())
-                    {
-                        foreach (var book in Model)
-                        {
-                            <tr>
-                                <td class="text-center">
-                                    <img src="@book.Image" class="img-fluid rounded" style="max-height:80px" />
-                                </td>
-                                <td class="fw-semibold">@book.Title</td>
-                                <td style="max-width:320px" class="text-muted">
-                                    @(string.IsNullOrWhiteSpace(book.Description)
-                                                                ? "Açıklama yok"
-                                                                : book.Description.Length > 100
-                                                                ? book.Description.Substring(0, 100) + "..."
-                                                                : book.Description)
-                                </td>
-                                <td>@book.Author</td>
-                                <td class="text-center">
-                                    @if (book.IsActive)
-                                    {
-                                        <span class="badge bg-success">Var</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge bg-danger">Yok</span>
-                                    }
-                                </td>
-                                <td class="text-center" style="white-space:nowrap;">
-                                    <div class="d-flex justify-content-center gap-1">
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="mb-2">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Ana Sayfa</a></li>
+        <li class="breadcrumb-item active">Kitap Yönetimi</li>
+    </ol>
+</nav>
 
-                                        <a asp-controller="EditBook"
-                                           asp-action="GetBookById"
-                                           asp-route-id="@book.Id"
-                                           class="btn btn-sm"
-                                           style="background-color:#6f42c1; color:white; border:none;">
-                                            ✏️ Güncelle
-                                        </a>
+<!-- Header -->
+<div class="d-flex align-items-center justify-content-between mb-3">
+    <div>
+        <h4 class="fw-bold mb-0"><i class="bi bi-book text-primary me-2"></i>Kitap Yönetimi</h4>
+        <small class="text-muted">Toplam <strong>@Model.TotalItemCount</strong> kitap</small>
+    </div>
+    <form asp-action="CreateBook" method="post" class="d-flex gap-2">
+        <input type="text"
+               name="query"
+               class="form-control form-control-sm"
+               style="width:240px;"
+               placeholder="ISBN veya kitap adı..."
+               required />
+        <button type="submit" class="btn btn-primary btn-sm">
+            <i class="bi bi-plus-lg me-1"></i>Ekle
+        </button>
+    </form>
+</div>
 
-                                        <button type="button"
-                                                class="btn btn-sm btn-danger"
-                                                onclick="openDeleteModal(@book.Id, '@book.Title')">
-                                            🗑️ Sil
-                                        </button>
-
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-                    }
-                    else
+<!-- Tablo -->
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th style="width:80px" class="text-center">Kapak</th>
+                    <th>Kitap Adı</th>
+                    <th>Açıklama</th>
+                    <th>Yazar</th>
+                    <th style="width:90px" class="text-center">Durum</th>
+                    <th style="width:160px" class="text-center">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var book in Model)
                     {
                         <tr>
-                            <td colspan="6" class="text-center py-5 text-muted">
-                                📭 Kayıtlı kitap bulunamadı
+                            <td class="text-center">
+                                @if (!string.IsNullOrEmpty(book.Image))
+                                {
+                                    <img src="@book.Image" class="book-cover" alt="@book.Title" />
+                                }
+                                else
+                                {
+                                    <div class="book-cover-placeholder">📚</div>
+                                }
+                            </td>
+                            <td class="fw-semibold">@book.Title</td>
+                            <td class="text-muted small">
+                                @(string.IsNullOrWhiteSpace(book.Description)
+                                    ? "Açıklama yok"
+                                    : book.Description.Length > 100
+                                        ? book.Description.Substring(0, 100) + "..."
+                                        : book.Description)
+                            </td>
+                            <td>@book.Author</td>
+                            <td class="text-center">
+                                @if (book.IsActive)
+                                {
+                                    <span class="badge bg-success">Var</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Yok</span>
+                                }
+                            </td>
+                            <td class="text-center" style="white-space:nowrap;">
+                                <div class="d-flex justify-content-center gap-1">
+                                    <a asp-controller="EditBook"
+                                           asp-action="GetBookById"
+                                           asp-route-id="@book.Id"
+                                           class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-pencil"></i> Düzenle
+                                    </a>
+                                    <button type="button"
+                                            class="btn btn-sm btn-outline-danger"
+                                            onclick="openDeleteModal(@book.Id, '@Html.Raw(book.Title?.Replace("'", "\\'"))')">
+                                        <i class="bi bi-trash"></i> Sil
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                     }
-                </tbody>
-            </table>
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6" class="text-center py-5 text-muted">
+                            📭 Kayıtlı kitap bulunamadı
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 
-            <div class="mt-3 d-flex justify-content-center">
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { pageNo = page }),
+        <div class="py-3 d-flex justify-content-center">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { pageNo = page }),
                 new PagedListRenderOptions
                 {
                     LiElementClasses = new[] { "page-item" },
                     PageClasses = new[] { "page-link" }
                 })
-            </div>
         </div>
     </div>
 </div>
 
 <!-- SİL MODAL -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:420px;">
         <div class="modal-content border-0 shadow">
             <div class="modal-header bg-danger text-white">
-                <h5 class="modal-title">🗑️ Kitabı Sil</h5>
+                <h6 class="modal-title"><i class="bi bi-trash me-2"></i>Kitabı Sil</h6>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <p class="mb-3"><strong>Kitap:</strong> <span id="deleteBookTitle"></span></p>
-                <p class="text-danger mb-0">⚠️ Bu işlem geri alınamaz. Silmek istiyor musunuz?</p>
+                <p class="mb-1">Şu kitabı silmek istediğinizden emin misiniz?</p>
+                <p class="fw-semibold" id="deleteBookTitle"></p>
+                <p class="text-danger small mb-0">⚠️ Bu işlem geri alınamaz.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Vazgeç</button>
                 <form id="deleteForm" method="post" class="d-inline">
                     @Html.AntiForgeryToken()
-                    <button type="submit" class="btn btn-danger">🗑️ Evet, Sil</button>
+                    <button type="submit" class="btn btn-danger btn-sm">Evet, Sil</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-<script src="~/js/Book.js"></script>
+
+<script>
+    function openDeleteModal(id, bookTitle) {
+        document.getElementById('deleteBookTitle').innerText = bookTitle;
+        document.getElementById('deleteForm').action = '/EditBook/DeleteBook/' + id;
+        new bootstrap.Modal(document.getElementById('deleteModal')).show();
+    }
+</script>
