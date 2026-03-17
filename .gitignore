@@ -58,3 +58,7 @@ nunit-*.xml
 appsettings.Development.json
 # Visual Studio cache
 .vs/
+
+# Logs
+Logs/
+*.txt
