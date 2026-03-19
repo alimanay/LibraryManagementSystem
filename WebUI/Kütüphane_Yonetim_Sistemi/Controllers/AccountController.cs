@@ -43,10 +43,13 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
             else
             {
                 HttpContext.Session.SetString("User", user.Name);
+                HttpContext.Session.SetString("UserId", user.UserId.ToString());
                 return RedirectToAction("GetUserDashboard", "UserDashboard");
             }
-
         }
+
+
+        
 
         [HttpPost]
         [ValidateAntiForgeryToken]

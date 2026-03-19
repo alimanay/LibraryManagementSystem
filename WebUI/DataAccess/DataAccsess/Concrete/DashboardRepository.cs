@@ -47,7 +47,7 @@ namespace DataAccess.DataAccsess.Concrete
             return await _context.Rentals
       .Include(r => r.User)
       .Include(r => r.Book)
-      .Where(r => !r.IsReturned && r.ReturnDate!.Value.Date <= DateTime.Now.Date)
+      .Where(r => !r.IsReturned && r.ReturnDate!.Value.Date < DateTime.Now.Date)
       .OrderBy(r => r.ReturnDate)
       .Take(5)
       .ToListAsync();
@@ -55,7 +55,7 @@ namespace DataAccess.DataAccsess.Concrete
 
         public  async Task<int> GetGecikmisSayi()
         {
-            var overdue = await _context.Rentals.Where(x => !x.IsReturned && x.ReturnDate!.Value.Date <= DateTime.Now.Date).CountAsync();
+            var overdue = await _context.Rentals.Where(x => !x.IsReturned && x.ReturnDate!.Value.Date < DateTime.Now.Date).CountAsync();
             return overdue;
         }
         public Task<List<Rental>> GetSonKiralamalar()

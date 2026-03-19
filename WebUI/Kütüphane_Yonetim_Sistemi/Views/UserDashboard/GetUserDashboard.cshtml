@@ -1,24 +1,129 @@
 ﻿@model IEnumerable<Entites.Models.User>
-
 @{
     ViewData["Title"] = "Kullanıcı Paneli";
-}
+    Layout = "_User";
 
-<h2>Kullanıcılar</h2>
+    var kullanici = ViewBag.Kullanici as Entites.Models.User;
+    var kiralamalar = ViewBag.Kiralamalar as List<Entites.Models.Rental> ?? new();
 
-@if (Model == null || !Model.Any())
-{
-    <p>Gösterilecek kullanıcı yok.</p>
+    int toplamKiralama = kiralamalar.Count;
+    int aktifKiralama = kiralamalar.Count(r => !r.IsReturned);
+    int teslimEdilen = kiralamalar.Count(r => r.IsReturned);
+    int gecikmisSayi = kiralamalar.Count(r => !r.IsReturned && r.ReturnDate.HasValue && r.ReturnDate.Value.Date < DateTime.Now.Date);
 }
-else
-{
-    <ul>
-        @foreach (var user in Model)
-        {
-            <li>
-                <strong>@user.Name</strong> - @user.Surname <br />
-                <small>@user.Email</small>
-            </li>
-        }
-    </ul>
-}
+<link href="~/css/UserDashboard.css" rel="stylesheet" />
+<!-- Kullanıcı Karşılama -->
+<div class="user-welcome mb-4">
+    <div class="d-flex align-items-center gap-3">
+        <div class="welcome-avatar">
+            @(kullanici?.Name?.Substring(0, 1).ToUpper() ?? "?")
+        </div>
+        <div>
+            <h4 class="fw-bold mb-0">Hoş Geldiniz, @kullanici?.Name @kullanici?.Surname</h4>
+            <small class="text-muted"><i class="bi bi-envelope me-1"></i>@kullanici?.Email</small>
+        </div>
+    </div>
+</div>
+
+<!-- İstatistik Kartları -->
+<div class="row g-3 mb-4">
+
+    <div class="col-lg-3 col-6">
+        <div class="stat-card primary">
+            <div class="stat-icon"><i class="bi bi-book"></i></div>
+            <div class="stat-info">
+                <div class="stat-number">@toplamKiralama</div>
+                <div class="stat-label">Toplam Kiralama</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-6">
+        <div class="stat-card warning">
+            <div class="stat-icon"><i class="bi bi-hourglass-split"></i></div>
+            <div class="stat-info">
+                <div class="stat-number">@aktifKiralama</div>
+                <div class="stat-label">Aktif Kiralama</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-6">
+        <div class="stat-card success">
+            <div class="stat-icon"><i class="bi bi-check-circle"></i></div>
+            <div class="stat-info">
+                <div class="stat-number">@teslimEdilen</div>
+                <div class="stat-label">Teslim Edilen</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-6">
+        <div class="stat-card danger">
+            <div class="stat-icon"><i class="bi bi-exclamation-triangle"></i></div>
+            <div class="stat-info">
+                <div class="stat-number">@gecikmisSayi</div>
+                <div class="stat-label">Gecikmiş Kitap</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Kiralama Geçmişi -->
+<div class="card shadow-sm border-0">
+    <div class="card-header bg-white border-bottom d-flex align-items-center justify-content-between">
+        <h6 class="fw-bold mb-0"><i class="bi bi-clock-history text-primary me-2"></i>Kiralama Geçmişim</h6>
+        <small class="text-muted">Toplam @toplamKiralama kayıt</small>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Kitap</th>
+                    <th>Yazar</th>
+                    <th class="text-center">Kiralama</th>
+                    <th class="text-center">Teslim</th>
+                    <th class="text-center" style="width:120px">Durum</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (kiralamalar.Any())
+                {
+                    foreach (var r in kiralamalar.OrderByDescending(x => x.RentDate))
+                    {
+                        <tr>
+                            <td class="fw-semibold">@r.Book?.Title</td>
+                            <td class="text-muted small">@r.Book?.Author</td>
+                            <td class="text-center small">@r.RentDate.ToString("dd.MM.yyyy")</td>
+                            <td class="text-center small">@r.ReturnDate?.ToString("dd.MM.yyyy")</td>
+                            <td class="text-center">
+                                @if (r.IsReturned)
+                                {
+                                    <span class="status-badge returned">Teslim</span>
+                                }
+                                else if (r.ReturnDate.HasValue && r.ReturnDate.Value.Date < DateTime.Now.Date)
+                                {
+                                    var gun = (DateTime.Now.Date - r.ReturnDate.Value.Date).Days;
+                                    <span class="status-badge overdue">@gun gün geç</span>
+                                }
+                                else
+                                {
+                                    <span class="status-badge rented">Kirada</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" class="text-center py-5 text-muted">
+                            📭 Henüz kiralama kaydınız bulunmuyor
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
