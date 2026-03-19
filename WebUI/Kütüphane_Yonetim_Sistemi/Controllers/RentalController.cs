@@ -9,13 +9,12 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
 {
     public class RentalController : Controller
     {
-        private readonly LibraryContext _context;
+       
         private readonly IRentalService _rentalService;
         private readonly IUserService _userService;
         private readonly IBookService _bookService;
-        public RentalController(LibraryContext context, IRentalService rentalService, IUserService userService, IBookService bookService)
+        public RentalController(IRentalService rentalService, IUserService userService, IBookService bookService)
         {
-            _context = context;
             _rentalService = rentalService;
             _userService = userService;
             _bookService = bookService;

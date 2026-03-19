@@ -12,12 +12,11 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
 {
     public class UserController : Controller
     {
-        private readonly LibraryContext _context;
+      
         private readonly IMapper _mapper;
         private readonly IUserService _userService;
-        public UserController(LibraryContext context, IMapper mapper, IUserService userService)
+        public UserController( IMapper mapper, IUserService userService)
         {
-            _context = context;
             _mapper = mapper;
             _userService = userService;
         }

@@ -8,12 +8,10 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
 {
     public class EditBookController : Controller
     {
-        private readonly LibraryContext _context;
         private readonly IMapper _mapper;
         private readonly IBookService _bookService;
-        public EditBookController(LibraryContext context, IMapper mapper,IBookService bookService)
+        public EditBookController(IMapper mapper,IBookService bookService)
         {
-            _context = context;
             _mapper = mapper;
             _bookService = bookService;
         }
