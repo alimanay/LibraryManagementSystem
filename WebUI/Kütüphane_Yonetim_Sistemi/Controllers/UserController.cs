@@ -3,6 +3,7 @@ using Entites.Dtos.BookDtos;
 using Entites.Dtos.UserDtos;
 using Entites.Models;
 using Kütüphane_Yonetim_Sistemi.Context;
+using Kütüphane_Yonetim_Sistemi.Helpers;
 using Kütüphane_Yonetim_Sistemi.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -49,6 +50,8 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
             {
                 return View("CreateUser", createUserDto);
             }
+            if(!string.IsNullOrEmpty(createUserDto.TCNumber))
+                createUserDto.TCNumber = EncryptionHelper.Encrypt(createUserDto.TCNumber);
 
             var createUser = _mapper.Map<User>(createUserDto);
             await _userService.Add(createUser);
@@ -60,6 +63,8 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
         {
             var user = await _userService.GetById(id);
             if (user == null) return NotFound();
+            if (!string.IsNullOrEmpty(user.TCNumber))
+                user.TCNumber = EncryptionHelper.Decrypt(user.TCNumber);
             var userDto = _mapper.Map<UpdateUserDto>(user);
             return View("EditUser", userDto); 
         }
@@ -75,6 +80,9 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
             }
             var existingUser =await _userService.GetById(userDto.UserId);
             if (existingUser == null) return NotFound();
+
+            if(!string.IsNullOrEmpty(userDto.TCNumber))
+                userDto.TCNumber = EncryptionHelper.Encrypt(userDto.TCNumber);
 
               _mapper.Map(userDto, existingUser);
 

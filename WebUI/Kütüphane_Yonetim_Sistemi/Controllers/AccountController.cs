@@ -25,9 +25,9 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
             var user = _libraryContext.Users
                     .Include(u => u.UserRoles)
                     .ThenInclude(ur => ur.Role)
-                    .FirstOrDefault(u => u.Email == email && u.PasswordHash == password);
+                    .FirstOrDefault(u => u.Email == email);
 
-            if (user == null)
+            if (user == null || !BCrypt.Net.BCrypt.Verify(password,user.PasswordHash))
             {
                 ViewBag.Error = "E-posta veya şifre hatalı";
                 return View();

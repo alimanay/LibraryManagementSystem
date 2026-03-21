@@ -1,4 +1,5 @@
-﻿using Entites.Models;
+﻿using BCrypt.Net;
+using Entites.Models;
 using Kütüphane_Yonetim_Sistemi.DataAccsess.Abstract;
 using Kütüphane_Yonetim_Sistemi.Services.Abstract;
 using Microsoft.Extensions.Logging;
@@ -18,6 +19,9 @@ namespace Kütüphane_Yonetim_Sistemi.Services.Concrete
 
         public async Task Add(User user)
         {
+            //Şifreme  Hashleme
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.PasswordHash);
+
             _logger.LogInformation(
                 "Kullanıcı ekleniyor. Ad: {Name} {Surname} - Email: {Email}",
                 user.Name, user.Surname, user.Email);

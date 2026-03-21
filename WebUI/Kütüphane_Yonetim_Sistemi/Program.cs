@@ -1,3 +1,4 @@
+using BCrypt.Net;
 using DataAccess.DataAccsess.Abstract;
 using DataAccess.DataAccsess.Concrete;
 using DataAccess.Services.Abstract;
@@ -7,11 +8,13 @@ using Infrastructure.ExternalServices.GoogleBooks;
 using Kütüphane_Yonetim_Sistemi.Context;
 using Kütüphane_Yonetim_Sistemi.DataAccsess.Abstract;
 using Kütüphane_Yonetim_Sistemi.DataAccsess.Concrete;
+using Kütüphane_Yonetim_Sistemi.Helpers;
 using Kütüphane_Yonetim_Sistemi.Services.Abstract;
 using Kütüphane_Yonetim_Sistemi.Services.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Serilog.Events;
+using System.Security.Cryptography;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -43,6 +46,9 @@ builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(30);
 });
+//Aes işlemleri
+var encryptionKey = builder.Configuration["Encryption:Key"];
+EncryptionHelper.SetKey(encryptionKey!);
 builder.Services.AddSession();
 var app = builder.Build();
 
