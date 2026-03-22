@@ -44,6 +44,9 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
             {
                 HttpContext.Session.SetString("User", user.Name);
                 HttpContext.Session.SetString("UserId", user.UserId.ToString());
+                if (!user.IsPasswordChanged)
+                    return RedirectToAction("ChangePassword", "UserDashboard");
+
                 return RedirectToAction("GetUserDashboard", "UserDashboard");
             }
         }

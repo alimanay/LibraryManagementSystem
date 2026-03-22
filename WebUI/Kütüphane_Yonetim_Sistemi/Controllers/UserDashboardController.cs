@@ -63,8 +63,31 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
         {
             if (HttpContext.Session.GetString("User") == null)
                 context.Result = RedirectToAction("Login", "Account");
-
             base.OnActionExecuting(context);
+        }
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View("ChangePassword");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(string newPassword, string confirmPassword)
+        {
+            if (newPassword != confirmPassword)
+            {
+                ViewBag.Error = "Şifreler eşleşmiyor";
+                return View("ChangePassword");
+            }
+
+            var userId = int.Parse(HttpContext.Session.GetString("UserId")!);
+            var user = await _userService.GetById(userId);
+
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(newPassword);
+            user.IsPasswordChanged = true;
+
+            await _userService.Update(user);
+            return RedirectToAction("Login", "Account");
         }
     }
 }

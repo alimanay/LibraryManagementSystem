@@ -15,6 +15,7 @@ namespace Entites.Models
         public string TCNumber { get; set; }
         public string Email { get; set; } = string.Empty;
         public string PasswordHash { get; set; }
+        public bool IsPasswordChanged { get; set; }
         public string PhoneNumber { get; set; }
         public bool IsActive { get; set; }
         public ICollection<Rental> Rentals { get; set; }

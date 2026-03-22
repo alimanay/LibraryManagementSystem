@@ -31,24 +31,24 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
             if (string.IsNullOrWhiteSpace(query))
                 return Json(new List<object>());
 
-            // 1️⃣ Async metodunu await ile çağır
             var allUsers = await _userService.GetAllUsers();
 
             // 2️⃣ LINQ işlemi artık List<User> üzerinde çalışır
             var users = allUsers
-                .Where(x => x.Name.Contains(query) || (x.TCNumber != null && x.TCNumber.Contains(query)))
+                .Where(x => x.Name.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+            x.Surname.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+            (x.TCNumber != null && x.TCNumber.Contains(query, StringComparison.OrdinalIgnoreCase)))
                 .Select(x => new
                 {
                     userId = x.UserId,
                     fullName = x.Name + " " + x.Surname,
-                    tcNumber = x.TCNumber
+                    tcNumber = Helpers.EncryptionHelper.Decrypt(x.TCNumber)
                 })
                 .ToList();
-
             return Json(users);
         }
 
-        // Yeni: kitap arama — seçilmiş kullanıcıya göre (userId isteğe bağlı)
+        // Yeni: kitap arama — seçilmiş kullanıcıya göre 
         [HttpGet]
         public async Task<IActionResult> SearchBook(string query, int? userId)
         {
@@ -130,6 +130,7 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
                 TempData["Error"] = "Teslim tarihi bugünün tarihinden önce olamaz.";
             else
             {
+
                 var rental = new Rental
                 {
                     UserId = UserId,

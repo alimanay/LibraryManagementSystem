@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\helpers\\encryptionhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\helpers\\encryptionhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\wwwroot\\css\\loginpanel.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\wwwroot\\css\\loginpanel.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\controllers\\userdashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\controllers\\userdashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\views\\userdashboard\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\views\\userdashboard\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|c:\\users\\alima\\desktop\\k\u00FCt\u00FCphaney\u00F6netimsistemi\\librarymanagementsystem\\webui\\k\u00FCt\u00FCphane_yonetim_sistemi\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B35EBC4E-EC2B-D8E6-4AED-44B33BDAFD45}|K\u00FCt\u00FCphane_Yonetim_Sistemi\\K\u00FCt\u00FCphane_Yonetim_Sistemi.csproj|solutionrelative:k\u00FCt\u00FCphane_yonetim_sistemi\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +30,72 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Program.cs",
-              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Program.cs",
-              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Program.cs",
-              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Program.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAADMAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-21T06:04:21.408Z",
+              "DocumentIndex": 0,
+              "Title": "LoginPanel.css",
+              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\wwwroot\\css\\LoginPanel.css",
+              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\wwwroot\\css\\LoginPanel.css",
+              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\wwwroot\\css\\LoginPanel.css",
+              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\wwwroot\\css\\LoginPanel.css",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAGAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-03-22T05:24:39.939Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EncryptionHelper.cs",
-              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Helpers\\EncryptionHelper.cs",
-              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Helpers\\EncryptionHelper.cs",
-              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Helpers\\EncryptionHelper.cs",
-              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Helpers\\EncryptionHelper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAhAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Changepassword.cshtml",
+              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\UserDashboard\\Changepassword.cshtml",
+              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\UserDashboard\\Changepassword.cshtml",
+              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\UserDashboard\\Changepassword.cshtml",
+              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\UserDashboard\\Changepassword.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABsAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-22T05:35:01.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-21T04:22:22.071Z",
+              "WhenOpened": "2026-03-22T05:34:14.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserDashboardController.cs",
+              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\UserDashboardController.cs",
+              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\UserDashboardController.cs",
+              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\UserDashboardController.cs",
+              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Controllers\\UserDashboardController.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAswFIAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-22T05:32:54.571Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\alima\\Desktop\\K\u00FCt\u00FCphaneY\u00F6netimSistemi\\LibraryManagementSystem\\WebUI\\K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "K\u00FCt\u00FCphane_Yonetim_Sistemi\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-22T05:22:54.387Z",
               "EditorCaption": ""
             }
           ]

@@ -1,11 +1,13 @@
-﻿using System.Security.Cryptography;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Security.Cryptography;
 using System.Text;
+
 
 namespace Kütüphane_Yonetim_Sistemi.Helpers
 {
     public class EncryptionHelper
     {
-        private static byte[]_keyBytes = Array.Empty<byte>();
+        private static byte[] _keyBytes = Array.Empty<byte>();
 
         public static void SetKey(string key)
         {
@@ -26,14 +28,17 @@ namespace Kütüphane_Yonetim_Sistemi.Helpers
 
         public static string Decrypt(string encrypted)
         {
-            if(string.IsNullOrEmpty(encrypted)) return encrypted;
-            using var aes = Aes.Create();
-            aes.Key = _keyBytes;
-            aes.IV =new byte[16];
-             var decryptor = aes.CreateDecryptor();
-            var bytes = Convert.FromBase64String(encrypted);
-            var result = decryptor.TransformFinalBlock(bytes,0, bytes.Length);
-            return Encoding.UTF8.GetString(result);
-        }
+          
+                if (string.IsNullOrEmpty(encrypted)) return encrypted;
+                using var aes = Aes.Create();
+                aes.Key = _keyBytes;
+                aes.IV = new byte[16];
+                var decryptor = aes.CreateDecryptor();
+                var bytes = Convert.FromBase64String(encrypted);
+                var result = decryptor.TransformFinalBlock(bytes, 0, bytes.Length);
+                return Encoding.UTF8.GetString(result);
+            
+            
+            }
     }
 }

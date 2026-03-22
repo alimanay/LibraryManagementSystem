@@ -50,7 +50,7 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
             var book = await _bookService.GetBookById(rental.BookId);
 
             ViewBag.CurrentUserName = user != null ? $"{user.Name} {user.Surname}" : "";
-            ViewBag.CurrentUserTC = user?.TCNumber ?? "";
+            ViewBag.CurrentUserTC =  Helpers.EncryptionHelper.Decrypt(user?.TCNumber ?? "");
             ViewBag.CurrentBookTitle = book != null ? $"{book.Title} ({book.ISBN})" : "";
 
             return View("~/Views/Rental/RentalEditLoan.cshtml", rental);
