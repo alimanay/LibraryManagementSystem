@@ -17,7 +17,7 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
         {
             int page = pageNo ?? 1;
             var result = await _rentalService.GetAllRental();
-            var overdue = result.Where(r => !r.IsReturned && r.ReturnDate.HasValue && r.ReturnDate.Value.Date <= DateTime.Now.Date).ToPagedList(page,10);
+            var overdue = result.Where(r => !r.IsReturned && r.ReturnDate.HasValue && r.ReturnDate.Value.Date < DateTime.Now.Date).ToPagedList(page,10);
             return View("/Views/Rental/RentalOverdue.cshtml", overdue);
         }
     }

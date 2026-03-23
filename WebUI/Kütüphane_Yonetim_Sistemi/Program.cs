@@ -5,6 +5,7 @@ using DataAccess.Services.Abstract;
 using DataAccess.Services.Concrete;
 using Entites.Dtos;
 using Infrastructure.ExternalServices.GoogleBooks;
+using Infrastructure.ExternalServices.Mail;
 using Kütüphane_Yonetim_Sistemi.Context;
 using Kütüphane_Yonetim_Sistemi.DataAccsess.Abstract;
 using Kütüphane_Yonetim_Sistemi.DataAccsess.Concrete;
@@ -49,7 +50,8 @@ builder.Services.AddSession(options =>
 //Aes işlemleri
 var encryptionKey = builder.Configuration["Encryption:Key"];
 EncryptionHelper.SetKey(encryptionKey!);
-builder.Services.AddSession();
+builder.Services.AddScoped<IMailService, GmailService>();
+builder.Services.AddHostedService<ReminderBackgroundService>();
 var app = builder.Build();
 
 
