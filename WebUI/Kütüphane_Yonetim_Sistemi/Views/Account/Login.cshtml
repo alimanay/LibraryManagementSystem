@@ -30,6 +30,14 @@
                     <span>⚠️</span> @ViewBag.Error
                 </div>
             }
+            @if (TempData["Success"] != null)
+            {
+                <div style="background:#f0fdf4; border:1px solid #bbf7d0; color:#16a34a;
+                    border-radius:10px; padding:10px 14px; font-size:0.85rem; margin-bottom:20px;">
+                    ✅ @TempData["Success"]
+                </div>
+            }
+
 
             <form method="post" asp-action="Login" asp-controller="Account">
 
@@ -44,11 +52,7 @@
                 </div>
 
                 <div class="login-options">
-                    <label class="remember-me">
-                        <input type="checkbox" name="RememberMe" />
-                        <span>Beni hatırla</span>
-                    </label>
-                    <a href="#" class="forgot-link">Şifremi unuttum</a>
+                    <a  asp-action="ForgotPassword" asp-controller="Account" class="forgot-link">Şifremi unuttum</a>
                 </div>
 
                 <button type="submit" class="login-submit">

@@ -2,18 +2,21 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Infrastructure.ExternalServices.Mail;
 
 namespace Kütüphane_Yonetim_Sistemi.Controllers
 {
     public class AccountController : Controller
     {
         private readonly LibraryContext _libraryContext;
-        public AccountController(LibraryContext libraryContext)
+        private readonly IMailService _mailService;
+        public AccountController(LibraryContext libraryContext, IMailService mailService)
         {
 
             _libraryContext = libraryContext;
+            _mailService = mailService;
         }
-        
+
         [HttpGet]
         public IActionResult Login()
         {
@@ -27,7 +30,7 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
                     .ThenInclude(ur => ur.Role)
                     .FirstOrDefault(u => u.Email == email);
 
-            if (user == null || !BCrypt.Net.BCrypt.Verify(password,user.PasswordHash))
+            if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
             {
                 ViewBag.Error = "E-posta veya şifre hatalı";
                 return View();
@@ -51,9 +54,6 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
             }
         }
 
-
-        
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Logout()
@@ -62,9 +62,76 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        
+        [HttpGet]
+        public IActionResult ForgotPassword() => View();
 
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(string email)
+        {
+            var user = _libraryContext.Users.FirstOrDefault(x => x.Email == email);
+            if (user == null)
+            {
+                ViewBag.Error = "Bu email kayıtlı değildir";
+                return View();
+            }
+            //Token üretme
+            var token = Guid.NewGuid().ToString("N");
+            user.PasswordResetToken = token;
+            user.PasswordResetTime = DateTime.Now.AddHours(1);
+            await _libraryContext.SaveChangesAsync();
+
+            //Mail Gönderme 
+            var resetLink = Url.Action("ResetPassword", "Account",
+                new { token }, Request.Scheme);
+
+            await _mailService.SendEmailAsync(
+                email,
+                "Şifre Sıfırlama",
+                $"<p>Şifrenizi sıfırlamak için <a href='{resetLink}'>tıklayın</a></p> <p>Link 1 saat geçerlidir.</p>"
+                );
+            ViewBag.Success = "Mail Gönderildi";
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ResetPassword(string token)
+        {
+            var user = _libraryContext.Users.FirstOrDefault(z => z.PasswordResetToken == token && z.PasswordResetTime > DateTime.Now);
+            if (user == null)
+            {
+                ViewBag.Error = "Link geçersiz veya süresi dolmuş";
+                return View("Login");
+            }
+
+            ViewBag.Token = token;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(string token, string newPassword,string confirmPassword)
+        {
+            
+            var user = _libraryContext.Users.FirstOrDefault(a => a.PasswordResetToken == token && a.PasswordResetTime > DateTime.Now);
+            if (user == null)
+            {
+                ViewBag.Error = "Link geçersiz veya süresi dolmuş.";
+                return View();
+            }
+            if (newPassword != confirmPassword)
+            {
+                ViewBag.Error = "Şifreler eşleşmiyor";
+                ViewBag.Token = token;
+                return View();
+            }
+            else
+            {
+                user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(newPassword);
+                user.PasswordResetTime = null;
+                user.PasswordResetToken = null;
+                await _libraryContext.SaveChangesAsync();
+                TempData["Success"] = "Şifreniz başarıyla güncellendi.";
+                return RedirectToAction("Login");
+            }
+        }
     }
 }
-
-
