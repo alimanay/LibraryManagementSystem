@@ -18,6 +18,8 @@ namespace Entites.Models
         public bool IsPasswordChanged { get; set; }
         public string? PasswordResetToken { get; set; }
         public DateTime? PasswordResetTime {  get; set; }
+        public string? TwoFactorCode { get; set; }
+        public DateTime? TwoFactorExpiry { get; set; }
         public string PhoneNumber { get; set; }
         public bool IsActive { get; set; }
         public ICollection<Rental> Rentals { get; set; }

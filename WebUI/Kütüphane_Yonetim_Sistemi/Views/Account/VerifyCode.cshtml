@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "_LoginLayout";
+}
+<link href="~/css/LoginPanel.css" rel="stylesheet" />
+
+<div class="login-wrapper" style="max-width:480px; min-height:auto; margin:0 auto;">
+    <div class="login-right" style="flex:1; padding:48px 44px;">
+        <div class="login-form-box" style="max-width:100%;">
+
+            <div class="text-center mb-4">
+                <div style="width:52px; height:52px; background:linear-gradient(135deg,#3b82f6,#6366f1);
+                    border-radius:50%; display:flex; align-items:center; justify-content:center;
+                    margin:0 auto 16px; font-size:1.3rem;">
+                    📩
+                </div>
+                <h3 class="login-heading">Doğrulama Kodu</h3>
+                <p class="login-sub">Email adresinize gönderilen 6 haneli kodu girin</p>
+            </div>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="login-error"><span>⚠️</span> @ViewBag.Error</div>
+            }
+
+            <form method="post" asp-action="VerifyCode" asp-controller="Account">
+                @Html.AntiForgeryToken()
+
+                <div class="input-group-custom">
+                    <label>Doğrulama Kodu</label>
+                    <input type="text"
+                           name="code"
+                           placeholder="000000"
+                           maxlength="6"
+                           required
+                           style="letter-spacing:8px; font-size:1.3rem; text-align:center; font-weight:600;" />
+                </div>
+
+                <button type="submit" class="login-submit mt-3">
+                    Doğrula <span>→</span>
+                </button>
+
+                <div class="text-center mt-3">
+                    <a asp-action="Login" asp-controller="Account"
+                           style="font-size:0.85rem; color:#6b7280; text-decoration:none;">
+                        ← Giriş sayfasına dön
+                    </a>
+                </div>
+            </form>
+
+            <div class="text-center mt-3">
+                <small class="text-muted">
+                    <i class="bi bi-clock me-1"></i>
+                    Kod 2 dakika geçerlidir
+                </small>
+            </div>
+
+        </div>
+    </div>
+</div>

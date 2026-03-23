@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Infrastructure.ExternalServices.Mail;
+using Entites.Models;
 
 namespace Kütüphane_Yonetim_Sistemi.Controllers
 {
@@ -23,18 +24,48 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Login(string email, string password)
+        public async Task<IActionResult> Login(string email, string password)
         {
-            var user = _libraryContext.Users
-                    .Include(u => u.UserRoles)
-                    .ThenInclude(ur => ur.Role)
-                    .FirstOrDefault(u => u.Email == email);
-
+            var user = _libraryContext.Users.Include(u => u.UserRoles).ThenInclude(u => u.Role).FirstOrDefault(a => a.Email == email);
             if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
             {
                 ViewBag.Error = "E-posta veya şifre hatalı";
                 return View();
             }
+
+            var code = new Random().Next(100000, 999999).ToString();
+            user.TwoFactorCode = code;
+            user.TwoFactorExpiry = DateTime.Now.AddMinutes(2);
+            _libraryContext.SaveChanges();
+
+            await _mailService.SendEmailAsync(user.Email, "Giriş Doğrulama Kodu", $"<h3>Doğrulama kodunuz: <b>{code}</b></h3><p>5 dakika geçerlidir.</p>");
+            // user Id lazım
+            HttpContext.Session.SetString("PendingUserId", user.UserId.ToString());
+            return RedirectToAction("VerifyCode");
+        }
+        [HttpPost]
+        public async Task<IActionResult> VerifyCode(string code)
+        {
+            var userId = HttpContext.Session.GetString("PendingUserId");
+            if (string.IsNullOrEmpty(userId))
+                return RedirectToAction("Login");
+
+            var user = _libraryContext.Users
+                .Include(u => u.UserRoles)
+                .ThenInclude(ur => ur.Role)
+                .FirstOrDefault(u => u.UserId == int.Parse(userId));
+
+            if (user == null || user.TwoFactorCode != code || user.TwoFactorExpiry < DateTime.Now)
+            {
+                ViewBag.Error = "Kod hatalı veya süresi dolmuş.";
+                return View();
+            }
+
+            // Kodu temizle
+            user.TwoFactorCode = null;
+            user.TwoFactorExpiry = null;
+            _libraryContext.SaveChanges();
+            HttpContext.Session.Remove("PendingUserId");
 
             bool isAdmin = user.UserRoles.Any(ur => ur.Role.Name == "Admin");
 
@@ -47,12 +78,20 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
             {
                 HttpContext.Session.SetString("User", user.Name);
                 HttpContext.Session.SetString("UserId", user.UserId.ToString());
+
                 if (!user.IsPasswordChanged)
                     return RedirectToAction("ChangePassword", "UserDashboard");
 
                 return RedirectToAction("GetUserDashboard", "UserDashboard");
             }
         }
+
+
+
+        [HttpGet]
+        public IActionResult VerifyCode() => View();
+
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
