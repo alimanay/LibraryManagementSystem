@@ -3,27 +3,24 @@ name: .NET Core Test Otomasyonu
 on:
   push:
     branches: [ "main", "master" ]
-  pull_request:
-    branches: [ "main", "master" ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Kodu Getir
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4 # BU SATIR ÇOK KRİTİK: Kodları PC'den GitHub makinesine çeker.
 
-    - name: .NET SDK Kur
+    - name: .NET Kurulumu
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 9.0.x # Kendi projenin versiyonuyla (6.0, 7.0 vb.) değiştir
+        dotnet-version: 8.0.x
 
-    - name: Paketleri Yukle
+    - name: Bağımlılıkları Yükle
       run: dotnet restore
 
     - name: Projeyi Derle
       run: dotnet build --no-restore
 
-    - name: Testleri Kos
+    - name: Testleri Çalıştır
       run: dotnet test --no-build --verbosity normal
