@@ -18,11 +18,14 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
+    - name: Dosyalari Listele (Hata Ayiklama)
+      run: find . -maxdepth 3 -name "*.sln"
+
     - name: Bağımlılıkları Yükle
-      run: dotnet restore WebUI/WebUI.sln
+      run: dotnet restore **/WebUI.sln
 
     - name: Projeyi Derle
-      run: dotnet build WebUI/WebUI.sln --no-restore
+      run: dotnet build **/WebUI.sln --no-restore
 
     - name: Testleri Çalıştır
-      run: dotnet test WebUI/WebUI.sln --no-build --verbosity normal
+      run: dotnet test **/WebUI.sln --no-build --verbosity normal
