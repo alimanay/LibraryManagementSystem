@@ -24,7 +24,7 @@ namespace Kütüphane_Yonetim_Sistemi.Services.Concrete
             return books;
         }
 
-        public async Task<Book?> GetBookById(int id)
+        public async Task<Book?> GetBookByIdAsync(int id)
         {
             _logger.LogInformation("Kitap getiriliyor. Id: {Id}" + id);
             var book=  await _bookRepository.GetByIdAsync(id);

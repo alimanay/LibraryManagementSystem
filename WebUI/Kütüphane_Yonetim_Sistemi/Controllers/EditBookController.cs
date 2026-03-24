@@ -19,7 +19,7 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetBookById(int id)
         {
-            var book =await _bookService.GetBookById(id);
+            var book =await _bookService.GetBookByIdAsync(id);
             if (book == null)
             {
                 return NotFound();
@@ -37,7 +37,7 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
             {
                 return View("~/Views/Book/GetBookById.cshtml", bookDto);
             }
-            var existingBook =  await _bookService.GetBookById(bookDto.Id);
+            var existingBook =  await _bookService.GetBookByIdAsync(bookDto.Id);
 
             if (existingBook == null)
             {

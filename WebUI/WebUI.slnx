@@ -3,4 +3,5 @@
   <Project Path="Entites/Entites.csproj" />
   <Project Path="Infrastructure/Infrastructure.csproj" Id="b6c1b939-8c0f-41ab-a076-735125d77081" />
   <Project Path="Kütüphane_Yonetim_Sistemi/Kütüphane_Yonetim_Sistemi.csproj" />
+  <Project Path="LibraryManagement.Test/LibraryManagement.Test.csproj" Id="ad65c6f6-8e1d-47de-ba15-621a890f7c75" />
 </Solution>

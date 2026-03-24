@@ -47,7 +47,7 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
             }
 
             var user = await _userService.GetById(rental.UserId);
-            var book = await _bookService.GetBookById(rental.BookId);
+            var book = await _bookService.GetBookByIdAsync(rental.BookId);
 
             ViewBag.CurrentUserName = user != null ? $"{user.Name} {user.Surname}" : "";
             ViewBag.CurrentUserTC =  Helpers.EncryptionHelper.Decrypt(user?.TCNumber ?? "");
@@ -75,7 +75,7 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
                 return RedirectToAction("EditLoan", new { id = RentalId });
             }
 
-            var book = await _bookService.GetBookById(BookId);
+            var book = await _bookService.GetBookByIdAsync(BookId);
             if (book == null || !book.IsActive)
             {
                 TempData["Error"] = "Seçilen kitap bulunamadı veya aktif değil.";

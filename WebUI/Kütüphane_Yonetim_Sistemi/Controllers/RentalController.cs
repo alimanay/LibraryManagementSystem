@@ -110,7 +110,7 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            var book = await _bookService.GetBookById(BookId);
+            var book = await _bookService.GetBookByIdAsync(BookId);
             if (book == null || !book.IsActive)
             {
                 TempData["Error"] = "Kitap bulunamadı veya kullanımda değil.";
