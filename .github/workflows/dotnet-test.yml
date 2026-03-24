@@ -19,16 +19,10 @@ jobs:
         dotnet-version: 9.0.x
 
     - name: Bağımlılıkları Yükle
-      run: |
-        SLN_PATH=$(find . -name "*.sln" -print -quit)
-        dotnet restore "$SLN_PATH"
+      run: dotnet restore "WebUI/Kütüphane_Yonetim_Sistemi/Kütüphane_Yonetim_Sistemi.csproj"
 
     - name: Projeyi Derle
-      run: |
-        SLN_PATH=$(find . -name "*.sln" -print -quit)
-        dotnet build "$SLN_PATH" --no-restore
+      run: dotnet build "WebUI/Kütüphane_Yonetim_Sistemi/Kütüphane_Yonetim_Sistemi.csproj" --no-restore
 
     - name: Testleri Çalıştır
-      run: |
-        SLN_PATH=$(find . -name "*.sln" -print -quit)
-        dotnet test "$SLN_PATH" --no-build --verbosity normal
+      run: dotnet test "WebUI/Kütüphane_Yonetim_Sistemi/Kütüphane_Yonetim_Sistemi.csproj" --no-build --verbosity normal
