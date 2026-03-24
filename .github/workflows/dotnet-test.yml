@@ -17,7 +17,7 @@ jobs:
     - name: .NET SDK Kur
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 9.0.x # Kendi projenin versiyonuyla (6.0, 7.0 vb.) değiştir
+        dotnet-version: 9.0.x 
 
     - name: Paketleri Yukle
       run: dotnet restore
