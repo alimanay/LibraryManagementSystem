@@ -7,23 +7,29 @@ on:
     branches: [ "main", "master" ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Kodu Getir
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-    - name: .NET SDK Kur
+    - name: .NET Kurulumu
       uses: actions/setup-dotnet@v4
       with:
+<<<<<<< HEAD
         dotnet-version: 9.0.x 
+=======
+        dotnet-version: 8.0.x
+>>>>>>> 149dc15be655e0ff025334fc606420ab3a4ceb07
 
-    - name: Paketleri Yukle
-      run: dotnet restore
+    - name: Bağımlılıkları Yükle
+      run: dotnet restore WebUI.sln 
+      working-directory: ./LibraryManagementSystem/WebUI
 
     - name: Projeyi Derle
-      run: dotnet build --no-restore
+      run: dotnet build WebUI.sln --no-restore
+      working-directory: ./LibraryManagementSystem/WebUI
 
-    - name: Testleri Kos
-      run: dotnet test --no-build --verbosity normal
+    - name: Testleri Çalıştır
+      run: dotnet test WebUI.sln --no-build --verbosity normal
+      working-directory: ./LibraryManagementSystem/WebUI
