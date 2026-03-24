@@ -16,20 +16,13 @@ jobs:
     - name: .NET Kurulumu
       uses: actions/setup-dotnet@v4
       with:
-<<<<<<< HEAD
-        dotnet-version: 9.0.x 
-=======
         dotnet-version: 8.0.x
->>>>>>> 149dc15be655e0ff025334fc606420ab3a4ceb07
 
     - name: Bağımlılıkları Yükle
-      run: dotnet restore WebUI.sln 
-      working-directory: ./LibraryManagementSystem/WebUI
+      run: dotnet restore WebUI/WebUI.sln
 
     - name: Projeyi Derle
-      run: dotnet build WebUI.sln --no-restore
-      working-directory: ./LibraryManagementSystem/WebUI
+      run: dotnet build WebUI/WebUI.sln --no-restore
 
     - name: Testleri Çalıştır
-      run: dotnet test WebUI.sln --no-build --verbosity normal
-      working-directory: ./LibraryManagementSystem/WebUI
+      run: dotnet test WebUI/WebUI.sln --no-build --verbosity normal
