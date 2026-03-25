@@ -25,4 +25,8 @@ jobs:
       run: dotnet build "WebUI/Kütüphane_Yonetim_Sistemi/Kütüphane_Yonetim_Sistemi.csproj" --no-restore
 
     - name: Testleri Çalıştır
+<<<<<<< HEAD
       run: dotnet test "WebUI/Kütüphane_Yonetim_Sistemi/Kütüphane_Yonetim_Sistemi.csproj" --no-build --verbosity normal
+=======
+      run: dotnet test "WebUI/Kütüphane_Yonetim_Sistemi/Kütüphane_Yonetim_Sistemi.csproj" --no-build --verbosity normal
+>>>>>>> bc1403d5383ec74e50d718432ec0753a0faa5f91
