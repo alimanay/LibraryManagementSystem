@@ -14,7 +14,10 @@ namespace Kütüphane_Yonetim_Sistemi.DataAccsess.Concrete
 
         public async Task<List<User>> GetAllUsersAsync()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users
+           .Include(u => u.UserRoles)
+           .ThenInclude(ur => ur.Role)
+           .ToListAsync();
         }
 
         public async Task<User?> GetByIdAsync(int id)

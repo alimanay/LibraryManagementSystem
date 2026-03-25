@@ -35,9 +35,20 @@
         <h4 class="fw-bold mb-0"><i class="bi bi-journal-text text-primary me-2"></i>Kiralama Listesi</h4>
         <small class="text-muted">Toplam <strong>@Model.TotalItemCount</strong> kayıt</small>
     </div>
-    <a asp-controller="Rental" asp-action="Index" class="btn btn-primary btn-sm">
-        <i class="bi bi-plus-lg me-1"></i> Yeni Kiralama
-    </a>
+    <div class="d-flex gap-2">
+        <div class="input-group input-group-sm" style="width:240px;">
+            <span class="input-group-text bg-white border-end-0">
+                <i class="bi bi-search text-muted"></i>
+            </span>
+            <input type="text"
+                   id="rentalSearch"
+                   class="form-control border-start-0"
+                   placeholder="Üye veya kitap ara..." />
+        </div>
+        <a asp-controller="Rental" asp-action="Index" class="btn btn-primary btn-sm">
+            <i class="bi bi-plus-lg me-1"></i> Yeni Kiralama
+        </a>
+    </div>
 </div>
 
 <!-- Tablo -->
@@ -60,16 +71,16 @@
                 {
                     foreach (var item in Model)
                     {
-                        <tr>
+                        <tr class="rental-row">
                             <td>
                                 <div class="d-flex align-items-center gap-2">
                                     <div class="user-avatar">
                                         @item.User.Name.Substring(0, 1).ToUpper()
                                     </div>
-                                    <span class="fw-semibold">@item.User.Name @item.User.Surname</span>
+                                    <span class="fw-semibold rental-username">@item.User.Name @item.User.Surname</span>
                                 </div>
                             </td>
-                            <td class="text-muted" style="max-width:220px;">@item.Book.Title</td>
+                            <td class="text-muted rental-booktitle" style="max-width:220px;">@item.Book.Title</td>
                             <td class="text-muted small">@item.Book.Author</td>
                             <td class="text-center small">@item.RentDate.ToString("dd.MM.yyyy")</td>
                             <td class="text-center small">@item.ReturnDate?.ToString("dd.MM.yyyy")</td>
@@ -124,7 +135,12 @@
             </tbody>
         </table>
 
-        <div class="py-3 d-flex justify-content-center">
+        <!-- Arama sonucu bulunamadı -->
+        <div id="noRentalResult" class="text-center py-5 text-muted d-none">
+            🔍 "<span id="rentalSearchTerm"></span>" için sonuç bulunamadı
+        </div>
+
+        <div class="py-3 d-flex justify-content-center" id="rentalPagination">
             @Html.PagedListPager(Model, page => Url.Action("Index", new { pageNo = page }),
                 new PagedListRenderOptions
                 {
@@ -184,3 +200,30 @@
 </div>
 
 <script src="~/js/RentalDetail.js"></script>
+<script>
+    document.getElementById('rentalSearch').addEventListener('input', function () {
+        const query      = this.value.toLowerCase().trim();
+        const rows       = document.querySelectorAll('.rental-row');
+        let found        = 0;
+
+        rows.forEach(function (row) {
+            const name  = row.querySelector('.rental-username')?.innerText.toLowerCase() ?? '';
+            const book  = row.querySelector('.rental-booktitle')?.innerText.toLowerCase() ?? '';
+            const match = name.includes(query) || book.includes(query);
+            row.style.display = match ? '' : 'none';
+            if (match) found++;
+        });
+
+        const noResult   = document.getElementById('noRentalResult');
+        const pagination = document.getElementById('rentalPagination');
+
+        if (query.length > 0 && found === 0) {
+            noResult.classList.remove('d-none');
+            document.getElementById('rentalSearchTerm').innerText = this.value;
+            pagination.classList.add('d-none');
+        } else {
+            noResult.classList.add('d-none');
+            pagination.classList.remove('d-none');
+        }
+    });
+</script>

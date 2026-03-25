@@ -3,6 +3,7 @@
 @using X.PagedList
 @{
     Layout = "_Book";
+    var roles = ViewBag.Roles as List<Entites.Models.Role> ?? new();
 }
 <link href="~/css/UserIndex.css" rel="stylesheet" />
 
@@ -35,39 +36,53 @@
         <h4 class="fw-bold mb-0"><i class="bi bi-people text-primary me-2"></i>Üye İşlemleri</h4>
         <small class="text-muted">Toplam <strong>@Model.TotalItemCount</strong> üye</small>
     </div>
-    <a asp-controller="User" asp-action="CreateUser" class="btn btn-primary btn-sm">
-        <i class="bi bi-person-plus me-1"></i> Kullanıcı Oluştur
-    </a>
+    <div class="d-flex gap-2">
+        <!-- Arama -->
+        <div class="input-group input-group-sm" style="width:240px;">
+            <span class="input-group-text bg-white border-end-0">
+                <i class="bi bi-search text-muted"></i>
+            </span>
+            <input type="text"
+                   id="userSearch"
+                   class="form-control border-start-0"
+                   placeholder="İsim veya email ara..." />
+        </div>
+        <a asp-controller="User" asp-action="CreateUser" class="btn btn-primary btn-sm">
+            <i class="bi bi-person-plus me-1"></i> Kullanıcı Oluştur
+        </a>
+    </div>
 </div>
 
 <!-- Tablo -->
 <div class="card shadow-sm border-0">
     <div class="card-body p-0">
-        <table class="table table-hover align-middle mb-0">
+        <table class="table table-hover align-middle mb-0" id="userTable">
             <thead class="table-light">
                 <tr>
                     <th>Adı Soyadı</th>
                     <th>Email</th>
                     <th>Telefon</th>
                     <th style="width:100px" class="text-center">Durum</th>
+                    <th style="width:100px" class="text-center">Rol</th>
                     <th style="width:180px" class="text-center">İşlemler</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="userTableBody">
                 @if (Model != null && Model.Any())
                 {
                     foreach (var user in Model)
                     {
-                        <tr>
+                        var currentRole = user.UserRoles?.FirstOrDefault()?.Role?.Name ?? "Yok";
+                        <tr class="user-row">
                             <td>
                                 <div class="d-flex align-items-center gap-2">
                                     <div class="user-avatar">
                                         @user.Name.Substring(0, 1).ToUpper()
                                     </div>
-                                    <span class="fw-semibold">@user.Name @user.Surname</span>
+                                    <span class="fw-semibold user-name">@user.Name @user.Surname</span>
                                 </div>
                             </td>
-                            <td class="text-muted">@user.Email</td>
+                            <td class="text-muted user-email">@user.Email</td>
                             <td class="text-muted">@user.PhoneNumber</td>
                             <td class="text-center">
                                 @if (user.IsActive)
@@ -78,6 +93,13 @@
                                 {
                                     <span class="badge bg-secondary">Pasif</span>
                                 }
+                            </td>
+                            <td class="text-center">
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-secondary"
+                                        onclick="openRoleModal(@user.UserId, '@user.Name @user.Surname', '@currentRole')">
+                                    <i class="bi bi-shield"></i> @currentRole
+                                </button>
                             </td>
                             <td class="text-center" style="white-space:nowrap;">
                                 <div class="d-flex justify-content-center gap-1">
@@ -100,7 +122,7 @@
                 else
                 {
                     <tr>
-                        <td colspan="5" class="text-center py-5 text-muted">
+                        <td colspan="6" class="text-center py-5 text-muted">
                             📭 Kayıtlı kullanıcı bulunamadı
                         </td>
                     </tr>
@@ -108,13 +130,50 @@
             </tbody>
         </table>
 
-        <div class="py-3 d-flex justify-content-center">
+        <!-- Arama sonucu bulunamadı -->
+        <div id="noSearchResult" class="text-center py-5 text-muted d-none">
+            🔍 "<span id="searchTerm"></span>" için sonuç bulunamadı
+        </div>
+
+        <div class="py-3 d-flex justify-content-center" id="paginationWrapper">
             @Html.PagedListPager(Model, page => Url.Action("Index", new { pageNo = page }),
                 new PagedListRenderOptions
                 {
                     LiElementClasses = new[] { "page-item" },
                     PageClasses = new[] { "page-link" }
                 })
+        </div>
+    </div>
+</div>
+
+<!-- ROL MODAL -->
+<div class="modal fade" id="roleModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:420px;">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-primary text-white">
+                <h6 class="modal-title"><i class="bi bi-shield me-2"></i>Rol Güncelle</h6>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-1">Kullanıcı: <strong id="roleUserName"></strong></p>
+                <p class="mb-3 text-muted small">Mevcut rol: <span id="currentRoleName"></span></p>
+                <label class="form-label fw-semibold">Yeni Rol Seç</label>
+                <select id="roleSelect" class="form-select">
+                    @foreach (var role in roles)
+                    {
+                        <option value="@role.Id">@role.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Vazgeç</button>
+                <form id="roleForm" method="post" asp-controller="User" asp-action="UpdateRole" class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="userId" id="roleUserId" />
+                    <input type="hidden" name="roleId" id="roleId" />
+                    <button type="submit" class="btn btn-primary btn-sm">Kaydet</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
@@ -144,3 +203,44 @@
 </div>
 
 <script src="~/js/User.js"></script>
+<script>
+    // ── ARAMA ──
+    document.getElementById('userSearch').addEventListener('input', function () {
+        const query = this.value.toLowerCase().trim();
+        const rows  = document.querySelectorAll('.user-row');
+        let found   = 0;
+
+        rows.forEach(function (row) {
+            const name  = row.querySelector('.user-name')?.innerText.toLowerCase() ?? '';
+            const email = row.querySelector('.user-email')?.innerText.toLowerCase() ?? '';
+            const match = name.includes(query) || email.includes(query);
+            row.style.display = match ? '' : 'none';
+            if (match) found++;
+        });
+
+        // Bulunamadı mesajı
+        const noResult = document.getElementById('noSearchResult');
+        const pagination = document.getElementById('paginationWrapper');
+        if (query.length > 0 && found === 0) {
+            noResult.classList.remove('d-none');
+            document.getElementById('searchTerm').innerText = this.value;
+            pagination.classList.add('d-none');
+        } else {
+            noResult.classList.add('d-none');
+            pagination.classList.remove('d-none');
+        }
+    });
+
+    // ── ROL MODAL ──
+    function openRoleModal(userId, userName, currentRole) {
+        document.getElementById('roleUserId').value = userId;
+        document.getElementById('roleUserName').innerText = userName;
+        document.getElementById('currentRoleName').innerText = currentRole;
+        document.getElementById('roleId').value = document.getElementById('roleSelect').value;
+        new bootstrap.Modal(document.getElementById('roleModal')).show();
+    }
+
+    document.getElementById('roleSelect').addEventListener('change', function () {
+        document.getElementById('roleId').value = this.value;
+    });
+</script>

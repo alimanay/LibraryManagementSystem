@@ -28,7 +28,9 @@ namespace Kütüphane_Yonetim_Sistemi.Helpers
 
         public static string Decrypt(string encrypted)
         {
-          
+            try
+            {
+
                 if (string.IsNullOrEmpty(encrypted)) return encrypted;
                 using var aes = Aes.Create();
                 aes.Key = _keyBytes;
@@ -37,8 +39,12 @@ namespace Kütüphane_Yonetim_Sistemi.Helpers
                 var bytes = Convert.FromBase64String(encrypted);
                 var result = decryptor.TransformFinalBlock(bytes, 0, bytes.Length);
                 return Encoding.UTF8.GetString(result);
+
+            }
+            catch { 
             
-            
+             return encrypted;
+            }
             }
     }
 }

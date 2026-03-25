@@ -31,7 +31,8 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
                 .Include(x => x.Book)
                 .Include(x => x.User)
                 .ToList();
-            var pagedListResult = result.ToPagedList(page, 5);
+
+            var pagedListResult = result.ToPagedList(page, 10);
             return View("/Views/Rental/RentalDetail.cshtml", pagedListResult);
         }
 

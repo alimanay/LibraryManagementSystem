@@ -1,4 +1,3 @@
-using BCrypt.Net;
 using DataAccess.DataAccsess.Abstract;
 using DataAccess.DataAccsess.Concrete;
 using DataAccess.Services.Abstract;
@@ -15,7 +14,6 @@ using Kütüphane_Yonetim_Sistemi.Services.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Serilog.Events;
-using System.Security.Cryptography;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -35,6 +33,9 @@ builder.Services.AddScoped<IRentalService, RentalService>();
 builder.Services.AddScoped<IRentalRepository, RentalRepository>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
 builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<IRoleService, RoleServices>();
+
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
     .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)

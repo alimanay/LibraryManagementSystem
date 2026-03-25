@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DataAccess.Services.Abstract;
 using Entites.Dtos.BookDtos;
 using Entites.Dtos.UserDtos;
 using Entites.Models;
@@ -16,23 +17,22 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
       
         private readonly IMapper _mapper;
         private readonly IUserService _userService;
-        public UserController( IMapper mapper, IUserService userService)
+        private readonly IRoleService _roleService;
+        public UserController(IMapper mapper, IUserService userService, IRoleService roleService)
         {
             _mapper = mapper;
             _userService = userService;
+            _roleService = roleService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index(int? pageNo)
         {
             int page = pageNo ?? 1;
-
-            // Async metodunu await et
             var users = await _userService.GetAllUsers();
-
-            // Şimdi ToPagedList çalışır
-            var pagedUsers = users.ToPagedList(page, 5);
-
+            var roles = await _roleService.GetAllRoles();
+            var pagedUsers = users.ToPagedList(page, 10);
+            ViewBag.Roles = roles;
             return View("Users", pagedUsers);
         }
         [HttpGet]
@@ -99,5 +99,15 @@ namespace Kütüphane_Yonetim_Sistemi.Controllers
               await _userService.Delete(id);    
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateRole(int userId, int roleId)
+        { 
+            await _roleService.UpdateUserRole(userId, roleId);
+            TempData["Success"] = "Rol güncellendi.";
+            return RedirectToAction(nameof(Index));
+        }  
+    
     }
 }
